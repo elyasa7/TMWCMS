@@ -1,0 +1,138 @@
+{% load staticfiles %}
+
+{% block mainmenu_ru %}
+
+<div class="hide-for-large" style="z-index: 8; position: relative;">
+
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+//-->
+</script>
+    <div style="background: #765931;">
+        <div style="float: left;">
+        	<a href="#" onclick="toggle_visibility('foo');" style="background: #765931; width: 100%; color: #FFF">
+        	    <fa class="fa fa-navicon white left" style="font-size: 24px; border: 1px solid #FFF; padding: 5px; border-radius: 5px; margin: 5px;"></fa>
+        	</a>
+    	</div>
+    	
+    	<div style="max-width: 80%; margin-right: 50px;">
+    	    <h6 class="white centered">OGUZKENT<br>HOTEL</h6>
+    	</div>
+    	
+    	<div style="right: 5px; position: absolute; top: -5px;">
+    	    <ul class="inline-list clear-list">
+    	        <li><a href="/ru"><img src="/static/img/system/ru.gif" style="max-width: 20px; margin-top: 20px; margin-right: 5px;"</a></li>
+    	        <li><a href="/en"><img src="/static/img/system/en.gif" style="max-width: 20px; margin-top: 20px; margin-right: 5px;"</a></li>
+    	        <li><a href="/tm"><img src="/static/img/system/tm.gif" style="max-width: 20px; margin-top: 20px; margin-right: 5px;"</a></li>
+    	    </ul>
+    	</div>
+    </div>
+</div>
+<div id="foo" style="display: none;">
+    <ul class="mobile-menu-list">
+				<li>
+					<a href="/{{ lang_prefix }}/">Homepage</a>
+				</li>
+				<li>
+					<a href="/{{ lang_prefix }}/accommodation/">Accommodation</a>
+				</li>
+				<li>
+					<a href="/{{ lang_prefix }}/activity/">Activities</a>
+				</li>
+				<li>
+					<a href="/{{ lang_prefix }}/restaurants/">Restaurants<br>and bars</a>
+				</li>
+				<li>
+					<a href="/{{ lang_prefix }}/spa/">SPA</a>
+				</li>
+				<li>
+					<a href="/{{ lang_prefix }}/complex/">Residence</a>
+				</li>
+				<!--<li>
+					<a href="/{{ lang_prefix }}/events/">Мероприятия</a>
+				</li>-->
+				<li>
+					<a href="/{{ lang_prefix }}/photogallery/">Photo Gallery</a>
+				</li>
+				<li>
+					<a href="/{{ lang_prefix }}/contacts/">Contacts</a>
+				</li>
+			</ul>
+</div>
+</div>
+
+
+
+
+<div class="header show-for-large">
+	<div class="row">
+		<div class="small-2 columns">
+			<img src="{% static "img/system/logo-flag.png" %}" class="top-logo">
+		</div>
+		<div class="small-10 columns">
+			<ul class="main-menu">
+				<li>
+					<a href="/{{ lang_prefix }}/">Homepage</a>
+				</li>
+				<li>
+					<a href="/{{ lang_prefix }}/accommodation/">Accommodation</a>
+				</li>
+				<li>
+					<a href="/{{ lang_prefix }}/activity/">Activities</a>
+				</li>
+				<li>
+					<a href="/{{ lang_prefix }}/restaurants/">Restaurants<br>and bars</a>
+				</li>
+				<li>
+					<a href="/{{ lang_prefix }}/spa/">SPA</a>
+				</li>
+				<li>
+					<a href="/{{ lang_prefix }}/complex/">Residence</a>
+				</li>
+				<!--<li>
+					<a href="/{{ lang_prefix }}/events/">Мероприятия</a>
+				</li>-->
+				<li>
+					<a href="/{{ lang_prefix }}/photogallery/">Photo Gallery</a>
+				</li>
+				<li>
+					<a href="/{{ lang_prefix }}/contacts/">Contacts</a>
+				</li>
+				
+				<li>
+				    <div style="position: relative">
+				    <img src="/static/img/system/{{ lang_prefix }}.gif" style="max-width: 20px; position: absolute; top: 19px; right: 87px;"/>
+				    <select class="lang-dropdown" name="mydropdown" onChange="document.location = this.value" value="GO">
+				        {% if lang_prefix = en %}
+    				        <option class="en-select" value="/en" selected>English</option>
+    				    {% else %}
+    				        <option class="en-select" value="/en">English</option>
+    				    {% endif %}
+    				    
+				        {% if lang_prefix = ru %}
+				            <option class="ru-select" value="/ru" selected>Русский</option>
+    				    {% else %}
+    				        <option class="ru-select" value="/ru">Русский</option>
+    				    {% endif %}
+    				    
+				        {% if lang_prefix = tm %}
+    				        <option class="tm-select" value="/tm" selected>Türkmençe</option>
+    				    {% else %}
+    				        <option class="tm-select" value="/tm">Türkmençe</option>
+    				    {% endif %}
+    				    
+    				</select>
+    				</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock %}

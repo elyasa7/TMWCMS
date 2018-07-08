@@ -1,0 +1,65 @@
+<div class="module-article-accordion">
+	<ul class="accordion" data-accordion>
+	{% with count=module.module_article_accordion_module_key.module_article_accordion_count|stringformat:"s" %}
+		{% with  count_slice=":"|add:count %}
+		{% for article in module.module_article_accordion_module_key.module_article_accordion_category.article_category_key.all|slice:count_slice %}
+			{% if article.article_published == 1 %}
+				{% if forloop.first %}
+					<li class="accordion-item is-active" data-accordion-item>
+						<a href="#" class="accordion-title">
+							{{ article.article_title }}
+						</a>
+						<div class="accordion-content" data-tab-content>
+							{% if module.module_article_accordion_module_key.module_article_accordion_image == 1 %}
+								<a href="/content/blog/{{ article.article_category.article_category_alias }}/" class="small">
+									<img src="/static/{{ article.article_image }}">
+								</a>
+							{% endif %}
+							{% if module.module_article_accordion_module_key.module_article_accordion_parent == 1 %}
+								<span><a href="/content/blog/{{ article.article_category.article_category_alias }}/" class="small">
+									{{ article.article_category }}</a>
+								</span>
+							{% endif %}
+							<p class="small">
+								{% autoescape off %}
+									{{ article.article_intro }}
+								{% endautoescape %}
+							</p>
+							<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}/" class="button small">
+								{{ module.module_article_accordion_module_key.module_article_accordion_button }}
+							</a>
+						</div>
+					</li>
+				{% else %}
+					<li class="accordion-item" data-accordion-item>
+						<a href="#" class="accordion-title">
+							{{ article.article_title }}
+						</a>
+						<div class="accordion-content" data-tab-content>
+							{% if module.module_article_accordion_module_key.module_article_accordion_image == 1 %}
+								<a href="/content/blog/{{ article.article_category.article_category_alias }}/" class="small">
+									<img src="/static/{{ article.article_image }}">
+								</a>
+							{% endif %}
+							{% if module.module_article_accordion_module_key.module_article_accordion_parent == 1 %}
+								<span><a href="/content/blog/{{ article.article_category.article_category_alias }}/" class="small">
+									{{ article.article_category }}</a>
+								</span>
+							{% endif %}
+							<p class="tiny">
+								{% autoescape off %}
+									{{ article.article_intro }}
+								{% endautoescape %}
+							</p>
+							<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}/" class="button small">
+								{{ module.module_article_accordion_module_key.module_article_accordion_button }}
+							</a>
+						</div>
+					</li>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+		{% endwith %}
+	{% endwith %}
+	</ul>
+</div>

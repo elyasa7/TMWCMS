@@ -1,0 +1,133 @@
+{% extends "mega_admin_main.html" %}
+{% load staticfiles %}
+
+{% block main-wrapper %}
+	{% include "mega_admin_top_menu.html" %}
+	{% include "content_caption.html" %}
+
+	<form action="/mega-admin/content/save-article/" enctype="multipart/form-data" method="post">
+		{% csrf_token %}
+		{% include "content_add_article_submenu.html" %}
+
+
+		<div class="row padding-20-0" data-equalizer="mega_admin_wrapper">
+			<div class="medium-8 columns" data-equalizer-watch="mega_admin_wrapper">
+				<div class="row">
+					<div class="medium-12 columns white-bg" style="border: 1px solid #cecece; border-radius: 10px;">
+						<div class="padding-20-0">
+							<div class="row">
+								<div class="medium-12 columns">
+									<label>
+										Article Title *
+										<input type="text" placeholder="Article title" name="article_title"
+										       value="{{ current_article.article_title }}" required>
+									</label>
+									<hr>
+									<label>
+										Article Intro
+										<textarea id="summernote" name="article_intro">{{ current_article.article_intro }}</textarea>
+									</label>
+
+									<hr>
+									<label>
+										Article Description
+										<textarea id="summernote2" name="article_content">{{ current_article.article_content }}</textarea>
+									</label>
+
+									<hr>
+									<label>
+										Article Note (optional)
+										<input type="text" placeholder="You can add note here" name="article_note" value="{{ current_article.article_note }}">
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="medium-4 columns" data-equalizer-watch="mega_admin_wrapper">
+				<div class="row">
+					<div class="medium-12 columns">
+
+						<div class="dashboard-sidebar">
+							<label style="margin-top: 10px;">
+								Article Alias*
+								<input type="text" placeholder="Article alias" name="article_alias" value="{{ current_article.article_alias }}" required>
+							</label>
+
+							<div class="clearfix"></div>
+							<div class="float-left">
+								<label>Article is published</label>
+							</div>
+							<div class="switch tiny float-right">
+								{% if current_article.article_published == 1 %}
+									<input class="switch-input" id="yes-no" type="checkbox" name="article_published" checked>
+								{% elif current_article.article_published == 0 %}
+									<input class="switch-input" id="yes-no" type="checkbox" name="article_published">
+								{% else %}
+									<input class="switch-input" id="yes-no" type="checkbox" name="article_published" checked>
+								{% endif %}
+								<label class="switch-paddle" for="yes-no">
+									<span class="switch-active" aria-hidden="true">Yes</span>
+									<span class="switch-inactive" aria-hidden="true">no</span>
+								</label>
+							</div>
+							<div class="clearfix"></div>
+							<label>
+								Article category
+								<select name="article_category" required>
+									{% for category in categories %}
+										{% if category.id == current_article.article_category_id %}
+										<option value="{{ category.id }}" selected>
+											{{ category.article_category_title }}
+										</option>
+									{% else %}
+										<option value="{{ category.id }}">
+											{{ category.article_category_title }}
+										</option>
+									{% endif %}
+									{% endfor %}
+								</select>
+							</label>
+							<div class="clearfix"></div>
+							<label>
+								Article Language
+								<select name="article_language" required>
+									{% for language in languages %}
+										{% if language.lang_sef == "xx" %}
+										<option value="{{ language.id }}" selected>
+											{{ language.lang_title_native }}
+										</option>
+										{% else %}
+										<option value="{{ language.id }}">
+											({{ language.lang_sef }}) {{ language.lang_title_native }}
+										</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							</label>
+							<div class="clearfix"></div>
+							<label>
+								Meta Key Words (use ',' for multiple)
+								<input type="text" name="article_metakey">
+							</label>
+							<textarea name="article_metadesc" rows="5" maxlength="2000"></textarea>
+							<p>
+								{% if current_article != None %}
+									<input type="text" value="{{ current_article.id }}" class="hidden" name="article_id">
+								{% endif %}
+							</p>
+
+							<div class="clearfix"></div>
+
+							<label>
+								Upload article image
+								<input type="file" id="id_article_image" name="article_image">
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+	</form>
+	</div>
+{% endblock %}

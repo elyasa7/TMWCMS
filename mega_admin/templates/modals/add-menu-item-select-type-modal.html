@@ -1,0 +1,22 @@
+<div class="reveal" id="add-menu-item-select-type-modal" data-reveal>
+	<h4>Select Type of new Menu Item</h4>
+	<hr>
+	<div class="medium-12 columns">
+		{% for menu_category in menu_categories %}
+			<h6>
+				{{ menu_category.menu_category_title }}
+			</h6>
+			{% for menu_type in menu_types %}
+				{% if menu_type.menu_type_category_id == menu_category.id %}
+					<a href="/mega-admin/add-menu-item/?item-type-id={{ menu_type.menu_type_alias }}" class="primary-color">
+						{{ menu_type.menu_type_title }}
+					</a><br>
+				{% endif %}
+			{% endfor %}
+			<hr>
+		{% endfor %}
+	</div>
+	<button class="close-button" data-close aria-label="Close modal" type="button">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>

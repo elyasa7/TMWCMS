@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TMW DEFAULT TEMPLATE v1.0 HOMEPAGE</title>
+	<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <link rel="stylesheet" href="{% static "tmw_default/css/foundation.css" %}">
+    <link rel="stylesheet" href="{% static "tmw_default/css/app.css" %}">
+	<script src="{% static "tmw_default/js/jquery-1.11.0.min.js" %}"></script>
+</head>
+<body>
+{% block blank %}{% endblock %}
+<script src="{% static "tmw_default/js/vendor/jquery.js" %}"></script>
+<script src="{% static "tmw_default/js/vendor/what-input.js" %}"></script>
+<script src="{% static "tmw_default/js/vendor/foundation.js" %}"></script>
+<script src="{% static "tmw_default/js/app.js" %}"></script>
+</body>
+</html>

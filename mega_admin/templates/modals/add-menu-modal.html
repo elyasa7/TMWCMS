@@ -1,0 +1,28 @@
+<div class="reveal" id="add-menu-modal" data-reveal>
+	<h4>Create new Menu</h4>
+	<hr>
+	<form action="/mega-admin/add-menu/" method="post">
+		{% csrf_token %}
+		<label>
+			<p>Menu title</p>
+			<input type="text" placeholder="menu title" name="menu_menu_title" required>
+		</label>
+		<label>
+			<p>Menu alias</p>
+			<input type="text" placeholder="menu alias" name="menu_menu_alias" required>
+		</label>
+		<label>
+			<p>Menu description</p>
+			<input type="text" placeholder="menu description" name="menu_menu_description" required>
+		</label>
+		<button type="button" class="button alert" data-close aria-label="Close modal">
+			Cancel
+		</button>
+		<button type="submit" class="button success">
+			Save
+		</button>
+	</form>
+	<button class="close-button" data-close aria-label="Close modal" type="button">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>

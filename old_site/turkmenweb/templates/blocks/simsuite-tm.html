@@ -1,0 +1,17 @@
+{% load staticfiles %}
+
+{% block simsuite-ru %}
+    <div class="sidebar-b">
+        <h5 class="primary-color centered">Oteliň otaglary</h5>
+        <hr>
+    {% for simsuite in simsuites %}
+    <h6>
+        {% if simsuite.id == suite.id %}
+        <a href="/tm/accommodation/{{ simsuite.id }}/" ><strong>{{ simsuite.suite_title }}</strong></a>
+        {% else %}
+        <a href="/tm/accommodation/{{ simsuite.id }}/" >{{ simsuite.suite_title }}</a>
+        {% endif %}
+    </h6>
+    {% endfor %}
+    </div>
+{% endblock %}

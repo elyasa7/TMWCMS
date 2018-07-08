@@ -1,0 +1,16 @@
+{% load staticfiles %}
+
+{% block details %}
+<div class="sidebar-b">
+<h5 class="centered">Детали Мероприятия</h5>
+<hr>
+    <h5 class="primary-color">
+        <strong>Цена:</strong> <span style="font-size: 120%"> {{ event.event_price }} манат</span>
+    </h5>
+<hr>
+{% autoescape off %}
+{{ event.event_details }}
+{% endautoescape %}
+</div>
+
+{% endblock %}

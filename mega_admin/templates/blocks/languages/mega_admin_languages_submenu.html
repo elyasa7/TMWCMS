@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+<div class="light-gray-bg">
+	<div class="row">
+		<div class="medium-10 columns">
+			<ul class="vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown" style="padding: 10px 0px;">
+				<li>
+					<button type="button" class="button tiny success" data-open="add-language-modal">
+						<fa class="fa fa-plus-circle"></fa> New Language
+					</button>
+				</li>
+			</ul>
+			<script>
+				$(window).on('changed.zf.mediaquery', function () {
+					$('.is-dropdown-submenu.invisible').removeClass('invisible');
+				});
+			</script>
+		</div>
+	</div>
+</div>
+
+
+{% include "add-language-modal.html" %}

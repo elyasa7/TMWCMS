@@ -1,0 +1,126 @@
+<h5>{{ module_type.module_type_title }}</h5>
+<label class="select-label" for="module_article_accordion_category">
+	Select Category
+</label>
+
+<select name="module_article_accordion_category" id="module_article_accordion_category" required>
+	{% for category in categories %}
+		{% if current_module.module_article_accordion_module_key.module_article_accordion_category_id == category.id %}
+			<option value="{{ category.id }}" selected>
+				{{ category.article_category_title }}
+			</option>
+		{% else %}
+			<option value="{{ category.id }}">
+				{{ category.article_category_title }}
+			</option>
+		{% endif %}
+	{% endfor %}
+</select>
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_article_accordion_count">
+	Items count
+</label>
+
+{% if current_module %}
+<input type="text" name="module_article_accordion_count" id="module_article_accordion_count" value="{{ current_module.module_article_accordion_module_key.module_article_accordion_count }}" required>
+{% else %}
+<input type="text" name="module_article_accordion_count" id="module_article_accordion_count" value="5" required>
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show only featured</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_accordion_module_key.module_article_accordion_feature == 1 %}
+		<input class="switch-input" id="accordion_feature" type="checkbox" name="module_article_accordion_feature" checked>
+	{% elif current_module.module_article_accordion_module_key.module_article_accordion_feature == 0 %}
+		<input class="switch-input" id="accordion_feature" type="checkbox" name="module_article_accordion_feature">
+	{% else %}
+		<input class="switch-input" id="accordion_feature" type="checkbox" name="module_article_accordion_feature">
+	{% endif %}
+	<label class="switch-paddle" for="accordion_feature">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show articles images</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_accordion_module_key.module_article_accordion_image == 1 %}
+		<input class="switch-input" id="accordion_image" type="checkbox" name="module_article_accordion_image" checked>
+	{% elif current_module.module_article_accordion_module_key.module_article_accordion_image == 0 %}
+		<input class="switch-input" id="accordion_image" type="checkbox" name="module_article_accordion_image">
+	{% else %}
+		<input class="switch-input" id="accordion_image" type="checkbox" name="module_article_accordion_image">
+	{% endif %}
+	<label class="switch-paddle" for="accordion_image">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show article date</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_accordion_module_key.module_article_accordion_date == 1 %}
+		<input class="switch-input" id="accordion_date" type="checkbox" name="module_article_accordion_date" checked>
+	{% elif current_module.module_article_accordion_module_key.module_article_accordion_date == 0 %}
+		<input class="switch-input" id="accordion_date" type="checkbox" name="module_article_accordion_date">
+	{% else %}
+		<input class="switch-input" id="accordion_date" type="checkbox" name="module_article_accordion_date">
+	{% endif %}
+	<label class="switch-paddle" for="accordion_date">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show article category</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_accordion_module_key.module_article_accordion_parent == 1 %}
+		<input class="switch-input" id="accordion_parent" type="checkbox" name="module_article_accordion_parent" checked>
+	{% elif current_module.module_article_accordion_module_key.module_article_accordion_parent == 0 %}
+		<input class="switch-input" id="accordion_parent" type="checkbox" name="module_article_accordion_parent">
+	{% else %}
+		<input class="switch-input" id="accordion_parent" type="checkbox" name="module_article_accordion_parent">
+	{% endif %}
+	<label class="switch-paddle" for="accordion_parent">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_article_accordion_button">
+	"Read More" text
+</label>
+{% if current_module %}
+<input type="text" name="module_article_accordion_button" id="module_article_accordion_button" value="{{ current_module.module_article_accordion_module_key.module_article_accordion_button }}" required>
+{% else %}
+<input type="text" name="module_article_accordion_button" id="module_article_accordion_button" value="Read more" required>
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+{% if current_module %}
+<input type="text" name="module_article_accordion_id" value="{{ current_module.module_article_accordion_module_key.id }}" class="hidden">
+{% endif %}
+

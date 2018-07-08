@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<div class="dashboard-sidebar">
+	<p>
+		Menu Manager
+	</p>
+
+	<a href="/mega-admin/menus/" {% if current_menu == "menus" %} class="active" {% endif %}>
+		{% if current_menu == "menus" %}
+			<i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>
+		{% endif %}
+		Menus
+	</a>
+
+	<a href="/mega-admin/menu-items/" {% if current_menu == "menu-items" %} class="active" {% endif %}>
+		{% if current_menu == "menu-items" %}
+			<i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>
+		{% endif %}
+		Menu Items
+	</a>
+
+</div>
+
+{% if current_menu == "menu-items" %}
+<div class="dashboard-sidebar">
+	<p>
+		Available menus
+	</p>
+	{% for menu in menus %}
+		<a href="/mega-admin/menu-items/?menu={{ menu.id }}"
+				{% if menu_item_menu.id == menu.id %} class="active"
+				{% else %}
+				class="inactive"
+				{% endif %}>
+			{{ menu.menu_menu_title }}
+		</a>
+	{% endfor %}
+
+</div>
+{% endif %}

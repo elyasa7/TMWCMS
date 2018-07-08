@@ -1,0 +1,38 @@
+<div class="reveal" id="add-menu-type-modal" data-reveal>
+	<h4>Create new menu type</h4>
+	<hr>
+	<form action="/mega-admin/add-menu-type/" method="post">
+		{% csrf_token %}
+		<label>
+			<p>
+				Menu type category
+			</p>
+			<select name="menu_type_category" required>
+				{% for menu_category in menu_categories %}
+					<option value="{{ menu_category.id }}">
+						{{ menu_category.menu_category_title }}
+					</option>
+				{% endfor %}
+			</select>
+		</label>
+		<label>
+			<p>Menu type title</p>
+			<input type="text" placeholder="menu type title" name="menu_type_title" required>
+		</label>
+		<label>
+			<p>Menu type alias</p>
+			<input type="text" placeholder="menu type alias" name="menu_type_alias" required>
+		</label>
+		<label>
+			<p>Menu type description</p>
+			<input type="text" placeholder="menu type description" name="menu_type_description" required>
+		</label>
+		<button type="button" class="button alert" data-close aria-label="Close modal">
+			Cancel
+		</button>
+		<button type="submit" class="button success">Save</button>
+	</form>
+	<button class="close-button" data-close aria-label="Close modal" type="button">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>

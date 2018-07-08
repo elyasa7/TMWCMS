@@ -1,0 +1,10 @@
+<h5>{{ menu_item_type.menu_type_title }}</h5>
+<label>
+	Custom URL
+	{% if current_menu_item != None %}
+		<input type="text" name="menu_item_custom_url" value="{{ custom_url.menu_item_custom_url }}" required>
+		<input type="text" name="menu_item_custom_url_id" value="{{ custom_url.id }}" class="hidden">
+	{% else %}
+		<input type="text" name="menu_item_custom_url" value="" required>
+	{% endif %}
+</label>

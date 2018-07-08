@@ -1,0 +1,15 @@
+{% load staticfiles %}
+
+<div class="primary-bg">
+	<div class="row">
+		<div class="medium-12 columns">
+			<h5 class="caption-text">
+				{% if current_menu_item %}
+					<fa class="fa fa-folder-open"></fa> {{ caption }}: {{ current_menu_item }}
+				{% else %}
+					<fa class="fa fa-folder-open"></fa> {{ caption }}
+				{% endif %}
+			</h5>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,297 @@
+<h5>{{ module_type.module_type_title }}</h5>
+
+<hr>
+
+<h4>Article List Main Articles Settings</h4>
+
+<hr>
+<label class="select-label" for="module_article_list_category">
+	Select Category
+</label>
+
+<select name="module_article_list_category" id="module_article_list_category" required>
+	{% for category in categories %}
+		{% if current_module.module_article_list_module_key.module_article_list_category_id == category.id %}
+			<option value="{{ category.id }}" selected>
+				{{ category.article_category_title }}
+			</option>
+		{% else %}
+			<option value="{{ category.id }}">
+				{{ category.article_category_title }}
+			</option>
+		{% endif %}
+	{% endfor %}
+</select>
+<hr>
+<div class="clearfix"></div>
+
+<h4>Article List Main Articles Settings</h4>
+
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_article_list_main_count">
+	Main Items count
+</label>
+
+{% if current_module %}
+<input type="text" name="module_article_list_main_count" id="module_article_list_main_count" value="{{ current_module.module_article_list_module_key.module_article_list_main_count }}" required>
+{% else %}
+<input type="text" name="module_article_list_main_count" id="module_article_list_main_count" value="5" required>
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show images in main articles</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_list_module_key.module_article_list_main_image == 1 %}
+		<input class="switch-input" id="slider_main_image" type="checkbox" name="module_article_list_main_image" checked>
+	{% elif current_module.module_article_list_module_key.module_article_list_main_image == 0 %}
+		<input class="switch-input" id="slider_main_image" type="checkbox" name="module_article_list_main_image">
+	{% else %}
+		<input class="switch-input" id="slider_main_image" type="checkbox" name="module_article_list_main_image">
+	{% endif %}
+	<label class="switch-paddle" for="slider_main_image">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show images in main articles AS THUMBNAILS</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_list_module_key.module_article_list_main_image_thumb == 1 %}
+		<input class="switch-input" id="slider_main_image_thumb" type="checkbox" name="module_article_list_main_image_thumb" checked>
+	{% elif current_module.module_article_list_module_key.module_article_list_main_image_thumb == 0 %}
+		<input class="switch-input" id="slider_main_image_thumb" type="checkbox" name="module_article_list_main_image_thumb">
+	{% else %}
+		<input class="switch-input" id="slider_main_image_thumb" type="checkbox" name="module_article_list_main_image_thumb">
+	{% endif %}
+	<label class="switch-paddle" for="slider_main_image_thumb">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show intro text in main articles</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_list_module_key.module_article_list_main_intro == 1 %}
+		<input class="switch-input" id="slider_main_intro" type="checkbox" name="module_article_list_main_intro" checked>
+	{% elif current_module.module_article_list_module_key.module_article_list_main_intro == 0 %}
+		<input class="switch-input" id="slider_main_intro" type="checkbox" name="module_article_list_main_intro">
+	{% else %}
+		<input class="switch-input" id="slider_main_intro" type="checkbox" name="module_article_list_main_intro">
+	{% endif %}
+	<label class="switch-paddle" for="slider_main_intro">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_article_list_main_intro_slice">
+	ntro text max characters in main articles
+</label>
+
+{% if current_module %}
+<input type="text" name="module_article_list_main_intro_slice" id="module_article_list_main_intro_slice" value="{{ current_module.module_article_list_module_key.module_article_list_main_intro_slice }}" required>
+{% else %}
+<input type="text" name="module_article_list_main_intro_slice" id="module_article_list_main_intro_slice" value="150" required>
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show "Read more" button for main articles</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_list_module_key.module_article_list_main_button == 1 %}
+		<input class="switch-input" id="slider_main_button" type="checkbox" name="module_article_list_main_button" checked>
+	{% elif current_module.module_article_list_module_key.module_article_list_main_button == 0 %}
+		<input class="switch-input" id="slider_main_button" type="checkbox" name="module_article_list_main_button">
+	{% else %}
+		<input class="switch-input" id="slider_main_button" type="checkbox" name="module_article_list_main_button">
+	{% endif %}
+	<label class="switch-paddle" for="slider_main_button">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_article_list_main_button_text">
+	"Read more" button value
+</label>
+
+{% if current_module %}
+<input type="text" name="module_article_list_main_button_text" id="module_article_list_main_button_text" value="{{ current_module.module_article_list_module_key.module_article_list_main_button_text }}" required>
+{% else %}
+<input type="text" name="module_article_list_main_button_text" id="module_article_list_main_button_text" value="Read more" required>
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_article_list_main_layout">
+	Custom layout style classes for main articles DIV (leave blank)
+</label>
+
+{% if current_module %}
+<input type="text" name="module_article_list_main_layout" id="module_article_list_main_layout" value="{{ current_module.module_article_list_module_key.module_article_list_main_layout }}">
+{% else %}
+<input type="text" name="module_article_list_main_layout" id="module_article_list_main_layout" value="">
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+<h4>Article List RELATED (links) Articles Settings</h4>
+
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_article_list_link_count">
+	Related Items count
+</label>
+
+{% if current_module %}
+<input type="text" name="module_article_list_link_count" id="module_article_list_link_count" value="{{ current_module.module_article_list_module_key.module_article_list_link_count }}" required>
+{% else %}
+<input type="text" name="module_article_list_link_count" id="module_article_list_link_count" value="5" required>
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show images in related articles</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_list_module_key.module_article_list_link_image == 1 %}
+		<input class="switch-input" id="slider_link_image" type="checkbox" name="module_article_list_link_image" checked>
+	{% elif current_module.module_article_list_module_key.module_article_list_link_image == 0 %}
+		<input class="switch-input" id="slider_link_image" type="checkbox" name="module_article_list_link_image">
+	{% else %}
+		<input class="switch-input" id="slider_link_image" type="checkbox" name="module_article_list_link_image">
+	{% endif %}
+	<label class="switch-paddle" for="slider_link_image">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show images in related articles AS THUMBNAILS</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_list_module_key.module_article_list_link_image_thumb == 1 %}
+		<input class="switch-input" id="slider_link_image_thumb" type="checkbox" name="module_article_list_link_image_thumb" checked>
+	{% elif current_module.module_article_list_module_key.module_article_list_link_image_thumb == 0 %}
+		<input class="switch-input" id="slider_link_image_thumb" type="checkbox" name="module_article_list_link_image_thumb">
+	{% else %}
+		<input class="switch-input" id="slider_link_image_thumb" type="checkbox" name="module_article_list_link_image_thumb">
+	{% endif %}
+	<label class="switch-paddle" for="slider_link_image_thumb">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show intro text in related articles</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_list_module_key.module_article_list_link_intro == 1 %}
+		<input class="switch-input" id="slider_link_intro" type="checkbox" name="module_article_list_link_intro" checked>
+	{% elif current_module.module_article_list_module_key.module_article_list_link_intro == 0 %}
+		<input class="switch-input" id="slider_link_intro" type="checkbox" name="module_article_list_link_intro">
+	{% else %}
+		<input class="switch-input" id="slider_link_intro" type="checkbox" name="module_article_list_link_intro">
+	{% endif %}
+	<label class="switch-paddle" for="slider_link_intro">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_article_list_link_intro_slice">
+	ntro text max characters in related articles
+</label>
+
+{% if current_module %}
+<input type="text" name="module_article_list_link_intro_slice" id="module_article_list_link_intro_slice" value="{{ current_module.module_article_list_module_key.module_article_list_link_intro_slice }}" required>
+{% else %}
+<input type="text" name="module_article_list_link_intro_slice" id="module_article_list_link_intro_slice" value="150" required>
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show "Read more" button for related articles</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_list_module_key.module_article_list_link_button == 1 %}
+		<input class="switch-input" id="slider_link_button" type="checkbox" name="module_article_list_link_button" checked>
+	{% elif current_module.module_article_list_module_key.module_article_list_link_button == 0 %}
+		<input class="switch-input" id="slider_link_button" type="checkbox" name="module_article_list_link_button">
+	{% else %}
+		<input class="switch-input" id="slider_link_button" type="checkbox" name="module_article_list_link_button">
+	{% endif %}
+	<label class="switch-paddle" for="slider_link_button">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_article_list_link_button_text">
+	"Read more" button value
+</label>
+
+{% if current_module %}
+<input type="text" name="module_article_list_link_button_text" id="module_article_list_link_button_text" value="{{ current_module.module_article_list_module_key.module_article_list_link_button_text }}" required>
+{% else %}
+<input type="text" name="module_article_list_link_button_text" id="module_article_list_link_button_text" value="Read more" required>
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_article_list_link_layout">
+	Custom layout style classes for related articles DIV (leave blank)
+</label>
+
+{% if current_module %}
+<input type="text" name="module_article_list_link_layout" id="module_article_list_link_layout" value="{{ current_module.module_article_list_module_key.module_article_list_link_layout }}">
+{% else %}
+<input type="text" name="module_article_list_link_layout" id="module_article_list_link_layout" value="">
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+{% if current_module %}
+<input type="text" name="module_article_list_id" value="{{ current_module.module_article_list_module_key.id }}" class="hidden">
+{% endif %}
+

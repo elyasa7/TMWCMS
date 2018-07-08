@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+{% block gallery-suite-all %}
+    <div class="lefted">
+        {% for minigal in minigals %}
+            <div class="pregallery-image float-left small-3 columns no-padding">
+                <a href="/{{ minigal.suite_image }}" class="lytebox" data-lyte-options="group:sidegal">
+                    <img src="/{{ minigal.suite_image }}"/>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

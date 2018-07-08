@@ -1,0 +1,36 @@
+{% load staticfiles %}
+
+{% block details %}
+<div class="sidebar-b">
+<h5 class="centered">Bronlamagyň bölekleri</h5>
+<ul class="clear-list" style="font-size: 90%;">
+    <li>
+        <strong>Girilen senesi:</strong> {{ indate }}
+    </li>
+    <li>
+        <strong>Çykylan senesi:</strong> {{ outdate }}
+    </li>
+    <li>
+        <strong>Agşamlaryň sany:</strong> {{ nights }}
+    </li>
+    <li>
+        <strong>Uly ýaşy adamlar:</strong> {{ adult }}
+    </li>
+    <li>
+        <strong>Çagalar:</strong> {{ child }}
+    </li>
+    <li>
+        <strong>Bir gije-gündiz üçin bahasy:</strong>  {{ price }}$'dan {{ max_price }}$'a çenli
+    </li>
+    <hr>
+    <!--
+    <li>
+        <h5 class="primary-color">
+            <strong>ИТОГО:</strong> <span style="font-size: 120%"> {{ total }} $</span>
+        </h5>
+        <span class="subheader">(с НДС)</span>
+    </li>-->
+</ul>
+</div>
+
+{% endblock %}

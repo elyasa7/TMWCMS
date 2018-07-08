@@ -1,0 +1,244 @@
+{% extends "tmw_default/tmw_default_main.html" %}
+
+{% load staticfiles %}
+
+{% block blank %}
+	<div class="grid-container-main-menu" style="background: #0a0a0a;">
+		<div class="row">
+			<div class="tmw-default-main-menu medium-12 columns">
+				<div class="title-bar hide-for-medium" data-responsive-toggle="example-animated-menu"
+				     data-hide-for="medium">
+					<button class="menu-icon" type="button" data-toggle></button>
+					<div class="title-bar-title">Menu</div>
+				</div>
+
+				<div class="top-bar" id="example-animated-menu" data-animate="hinge-in-from-top spin-out">
+					<div class="top-bar-left">
+						{% for module in modules %}
+							{% if module.module_position.template_position_alias == 'logo' %}
+								{% include "mega_admin_module_frontend.html" %}
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="top-bar-right">
+						<ul class="dropdown vertical medium-horizontal menu"
+						    data-responsive-menu="drilldown medium-dropdown" data-auto-height="true"
+						    data-animate-height="true">
+							{% for menu_item in menu_items %}
+								{% if menu_item.menu_item_parent_item.id <= 0 %}
+									<li>
+										{% if menu_item.menu_item_type.menu_type_alias == "system-custom-url" %}
+											<a href="{{ menu_item.menu_item_custom_url_menu_item_key.menu_item_custom_url }}">
+												{% autoescape off %}
+													{{ menu_item.menu_item_title }}
+												{% endautoescape %}
+											</a>
+										{% endif %}
+										{% if menu_item.menu_item_type.menu_type_alias == "single-article" %}
+											<a href="/content/article/{{ menu_item.menu_item_single_article_menu_item_key.menu_item_single_article_article.article_alias }}">
+												{% autoescape off %}
+													{{ menu_item.menu_item_title }}
+												{% endautoescape %}
+											</a>
+										{% endif %}
+										{% if menu_item.menu_item_type.menu_type_alias == "article-category-blog" %}
+											<a href="/content/blog/{{ menu_item.menu_item_category_blog_menu_item_key.menu_item_category_blog_category.article_category_alias }}">
+												{% autoescape off %}
+													{{ menu_item.menu_item_title }}
+												{% endautoescape %}
+											</a>
+										{% endif %}
+										{% if menu_item.menu_item_key.count >= 1 %}
+											<ul class="menu vertical">
+												{% for sub_item in menu_items %}
+													<li>
+														{% if sub_item.menu_item_parent_item.id == menu_item.id %}
+															{% if sub_item.menu_item_type.menu_type_alias == "system-custom-url" %}
+																<a href="{{ sub_item.menu_item_custom_url_menu_item_key.menu_item_custom_url }}">
+																	{% autoescape off %}
+																		{{ sub_item.menu_item_title }}
+																	{% endautoescape %}
+																</a>
+															{% endif %}
+															{% if sub_item.menu_item_type.menu_type_alias == "single-article" %}
+																<a href="/content/article/{{ sub_item.menu_item_single_article_menu_item_key.menu_item_single_article_article.article_alias }}">
+																	{% autoescape off %}
+																		{{ sub_item.menu_item_title }}
+																	{% endautoescape %}
+																</a>
+															{% endif %}
+															{% if sub_item.menu_item_type.menu_type_alias == "article-category-blog" %}
+																<a href="/content/blog/{{ sub_item.menu_item_category_blog_menu_item_key.menu_item_category_blog_category.article_category_alias }}">
+																	{% autoescape off %}
+																		{{ sub_item.menu_item_title }}
+																	{% endautoescape %}
+																</a>
+															{% endif %}
+														{% endif %}
+														{% if sub_item.menu_item_key.count >= 1 %}
+															<ul class="menu vertical">
+																{% for sub_sub_item in menu_items %}
+																	<li>
+																		{% if sub_sub_item.menu_item_parent_item.id == sub_item.id %}
+																			{% if sub_sub_item.menu_item_type.menu_type_alias == "system-custom-url" %}
+																				<a href="{{ sub_sub_item.menu_item_custom_url_menu_item_key.menu_item_custom_url }}">
+																					{% autoescape off %}
+																						{{ sub_sub_item.menu_item_title }}
+																					{% endautoescape %}
+																				</a>
+																			{% endif %}
+																			{% if sub_sub_item.menu_item_type.menu_type_alias == "single-article" %}
+																				<a href="/content/blog/{{ sub_sub_item.menu_item_single_article_menu_item_key.menu_item_single_article_article.article_alias }}">
+																					{% autoescape off %}
+																						{{ sub_sub_item.menu_item_title }}
+																					{% endautoescape %}
+																				</a>
+																			{% endif %}
+																			{% if sub_sub_item.menu_item_type.menu_type_alias == "article-category-blog" %}
+																				<a href="/content/blog/{{ sub_sub_item.menu_item_category_blog_menu_item_key.menu_item_category_blog_category.article_category_alias }}">
+																					{% autoescape off %}
+																						{{ sub_sub_item.menu_item_title }}
+																					{% endautoescape %}
+																				</a>
+																			{% endif %}
+																		{% endif %}
+																	</li>
+																{% endfor %}
+															</ul>
+														{% endif %}
+													</li>
+												{% endfor %}
+											</ul>
+										{% endif %}
+									</li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% block slideshow %}
+<div>
+	<div class="row">
+		{% for module in modules %}
+			{% if module.module_position.template_position_alias == 'slide_show' %}
+				{% include "mega_admin_module_frontend.html" %}
+			{% endif %}
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
+
+<div class="clearfix" style="padding-top: 20px;"></div>
+
+<div style="">
+	<div class="row">
+		<div class="medium-12 columns">
+			{% block page_title %}{% endblock %}
+		</div>
+	</div>
+</div>
+
+{#<script>#}
+{#$(document).ready(function () {#}
+{#    var str = $('div.sidebar-a').text();#}
+{#    if ($.trim(str) === "") {#}
+{#        $('div.sidebar-a-parent').hide();#}
+{#    }#}
+{#{);#}
+{#</script>#}
+
+<script>
+ $(document).ready(function(){
+   if ($(".sidebar-a").html().length > 0) {
+     $('.sidebar-a-parent').show();
+   }
+ });
+</script>
+<div class="mainbody">
+	<div class="">
+		<div class="row">
+			<div class="medium-3 small-12 columns sidebar-a-parent" style="display: none;" id="sidebar-a-parent">
+				<div class="row">
+					{% block sidebar %}
+						{% for module in modules %}
+							{% if module.module_position.template_position_alias == 'sidebar-a' %}
+								<div class="sidebar-a" id="sidebar-a">
+									{% include "mega_admin_module_frontend.html" %}
+								</div>
+							{% endif %}
+						{% endfor %}
+					{% endblock %}
+				</div>
+			</div>
+			<div class="column">
+
+				{% block article_body %}
+					<div class="row">
+						{% for module in modules %}
+							{% if module.module_position.template_position_alias == 'article_body' %}
+								{% include "mega_admin_module_frontend.html" %}
+							{% endif %}
+						{% endfor %}
+					</div>
+				{% endblock %}
+
+				{% block article %}
+
+				{% endblock %}
+			</div>
+		</div>
+
+		{% block article_bottom %}
+			<div class="small-12 columns">
+				<div class="row">
+					{% for module in modules %}
+						{% if module.module_position.template_position_alias == 'article_bottom' %}
+							{% include "mega_admin_module_frontend.html" %}
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		{% endblock %}
+	</div>
+</div>
+
+{% block bottom %}
+	<div class="bottom">
+		<div class="row">
+			{% for module in modules %}
+				{% if module.module_position.template_position_alias == 'bottom' %}
+					{% include "mega_admin_module_frontend.html" %}
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block footer %}
+	<div class="footer">
+		<div class="row">
+			{% for module in modules %}
+				{% if module.module_position.template_position_alias == 'footer' %}
+					{% include "mega_admin_module_frontend.html" %}
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block copyright %}
+	<div class="copyright">
+		<div class="row">
+			{% for module in modules %}
+				{% if module.module_position.template_position_alias == 'copyright' %}
+					{% include "mega_admin_module_frontend.html" %}
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,393 @@
+{% extends "mega_admin_main.html" %}
+{% load staticfiles %}
+
+{% block main-wrapper %}
+	{% include "mega_admin_top_menu.html" %}
+	{% include "captions/mega_admin_module_caption.html" %}
+</div>
+	<form action="/mega-admin/module/save-module/" method="post">
+	{% csrf_token %}
+
+		{% include "blocks/mega_admin_add_module_submenu.html" %}
+
+
+		<div class="row padding-20-0" data-equalizer="mega_admin_wrapper">
+			<div class="row">
+				<div class="medium-12 columns">
+
+					<ul class="tabs" data-tabs id="example-tabs">
+						<li class="tabs-title is-active">
+							<a href="#general_info" aria-selected="true">
+								General
+							</a>
+						</li>
+						<li class="tabs-title">
+							<a data-tabs-target="module_positions" href="#module_positions">
+								Module Positions
+							</a>
+						</li>
+						<li class="tabs-title">
+							<a data-tabs-target="module_layout" href="#module_layout">
+								Module Layout
+							</a>
+						</li>
+						<li class="tabs-title">
+							<a data-tabs-target="module_style" href="#{{ module_type.module_type_alias }}">
+								{{ module_type.module_type_title }}
+							</a>
+						</li>
+						{% if current_module.module_type.module_type_alias == 'image-slider' %}
+							<li class="tabs-title">
+								<a data-tabs-target="module_image_slider_content" href="#module_image_slider_content">
+									TMW v1.0 Slider Content
+								</a>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+
+					<div class="medium-12 columns">
+					<div class="tabs-content" data-tabs-content="example-tabs">
+						<div class="tabs-panel is-active" id="general_info">
+							<div class="row">
+								<div class="medium-8 columns" data-equalizer-watch="mega_admin_wrapper">
+									<div class="row">
+										<div class="medium-12 columns white-bg"
+										     style="border: 1px solid #cecece; border-radius: 10px;">
+											<div class="padding-20-0">
+												<div class="row">
+													<div class="medium-12 columns">
+														<label>
+															Module Title *
+															<input type="text" placeholder="Module title"
+															       name="module_title"
+															       value="{{ current_module.module_title }}"
+															       required>
+														</label>
+														<label>
+															Module SubTitle (optional)
+															<input type="text" placeholder="Module subtitle"
+															       name="module_subtitle"
+															       value="{{ current_module.module_subtitle }}">
+														</label>
+														<hr>
+
+														<h5>
+															{{ module_type.module_type_title }}
+														</h5>
+														<p>
+															{{ module_type.module_type_description }}
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="medium-4 columns" data-equalizer-watch="mega_admin_wrapper">
+									<div class="row">
+										<div class="medium-12 columns">
+
+											<div class="dashboard-sidebar">
+
+												<div class="clearfix"></div>
+
+												<div class="float-left">
+													<label>Module is published</label>
+												</div>
+												<div class="switch tiny float-right">
+													{% if current_module.module_published == 1 %}
+														<input class="switch-input" id="yes-no" type="checkbox"
+														       name="module_published"
+														       checked>
+													{% elif current_module.module_published == 0 %}
+														<input class="switch-input" id="yes-no" type="checkbox"
+														       name="module_published">
+													{% else %}
+														<input class="switch-input" id="yes-no" type="checkbox"
+														       name="module_published"
+														       checked>
+													{% endif %}
+													<label class="switch-paddle" for="yes-no">
+														<span class="switch-active" aria-hidden="true">Yes</span>
+														<span class="switch-inactive" aria-hidden="true">no</span>
+													</label>
+												</div>
+
+												<div class="clearfix"></div>
+
+												<div class="float-left">
+													<label>Show module title</label>
+												</div>
+												<div class="switch tiny float-right">
+													{% if current_module.module_show_title == 1 %}
+														<input class="switch-input" id="module-show-title" type="checkbox"
+														       name="module_show_title"
+														       checked>
+													{% elif current_module.module_show_title == 0 %}
+														<input class="switch-input" id="module-show-title" type="checkbox"
+														       name="module_show_title">
+													{% else %}
+														<input class="switch-input" id="module-show-title" type="checkbox"
+														       name="module_show_title"
+														       checked>
+													{% endif %}
+													<label class="switch-paddle" for="module-show-title">
+														<span class="switch-active" aria-hidden="true">Yes</span>
+														<span class="switch-inactive" aria-hidden="true">no</span>
+													</label>
+												</div>
+
+												<div class="clearfix"></div>
+
+												<label>
+													Select position
+													<select name="module_position" required>
+														{% for position in positions %}
+															{% if current_module.module_position_id == position.id %}
+																<option value="{{ position.id }}" selected>
+																	{{ position.template_position_name }}
+																</option>
+															{% else %}
+																<option value="{{ position.id }}">
+																	{{ position.template_position_name }}
+																</option>
+															{% endif %}
+														{% endfor %}
+													</select>
+												</label>
+												<div class="clearfix"></div>
+												<label>
+													Menu Item Language
+													<select name="module_language" required>
+														{% for language in languages %}
+															{% if current_module != None %}
+																{% if current_module.module_language_id == language.id %}
+																	<option value="{{ language.id }}" selected>
+																		{{ language.lang_title_native }}
+																	</option>
+																{% else %}
+																	<option value="{{ language.id }}">
+																		{{ language.lang_title_native }}
+																	</option>
+																{% endif %}
+															{% else %}
+																{% if language.lang_sef == "xx" %}
+																	<option value="{{ language.id }}" selected>
+																		{{ language.lang_title_native }}
+																	</option>
+																{% else %}
+																	<option value="{{ language.id }}">
+																		({{ language.lang_sef }}) {{ language.lang_title_native }}
+																	</option>
+																{% endif %}
+															{% endif %}
+														{% endfor %}
+													</select>
+												</label>
+
+												{% if current_menu_item != None %}
+
+													<div class="clearfix"></div>
+
+													<label>
+														Has parent item
+														<select name="menu_item_parent_item">
+															<option value="">
+																No parrent
+															</option>
+															{% for menu_item in menu_items %}
+																{% if current_menu_item.menu_item_parent_item.id == menu_item.id %}
+																	<option value="{{ menu_item.id }}" selected>
+																		{{ menu_item.menu_item_title }}
+																	</option>
+																{% else %}
+																	<option value="{{ menu_item.id }}">
+																		{{ menu_item.menu_item_title }}
+																	</option>
+																{% endif %}
+															{% endfor %}
+														</select>
+													</label>
+												{% endif %}
+												<div class="clearfix"></div>
+												<p>
+													{% if current_module != None %}
+														<input type="text" value="{{ current_module.id }}"
+														       class="hidden"
+														       name="current_module_id">
+													{% endif %}
+													<input class="hidden" type="text" name="module_type"
+													       value="{{ module_type.module_type_alias }}">
+												</p>
+
+												<p>
+													{% for module_menu_item in current_module.module_menu_item.all %}
+														{{ module_menu_item.id }}
+													{% endfor %}
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tabs-panel" id="module_positions">
+							<div class="row">
+								<div class="medium-12 columns">
+
+									<div class="row">
+										<div class="medium-12 columns">
+											<ul class="clear-list">
+												<li>
+													<label class="select-label">
+														{% if current_module.module_show_option == "all" %}
+															<input name="module_show_option" type="radio" value="all" checked>
+															Show on all pages
+														{% else %}
+															<input name="module_show_option" type="radio" value="all" checked>
+															Show on all pages
+														{% endif %}
+													</label>
+												</li>
+												<li>
+													<label class="select-label">
+														{% if current_module.module_show_option == "none" %}
+															<input name="module_show_option" type="radio" value="none" checked>
+															Don't show on any page
+														{% else %}
+															<input name="module_show_option" type="radio" value="none">
+															Don't show on any page
+														{% endif %}
+													</label>
+												</li>
+												<li>
+													<label class="select-label">
+														{% if current_module.module_show_option == "selected" %}
+															<input name="module_show_option" type="radio" value="selected" checked>
+															Show only on selected
+														{% else %}
+															<input name="module_show_option" type="radio" value="selected">
+															Show only on selected
+														{% endif %}
+													</label>
+												</li>
+												<li>
+													<label class="select-label">
+														{% if current_module.module_show_option == "except" %}
+															<input name="module_show_option" type="radio" value="except" checked>
+															Show on all except selected
+														{% else %}
+															<input name="module_show_option" type="radio" value="except">
+															Show on all except selected
+														{% endif %}
+													</label>
+												</li>
+											</ul>
+											<script>
+												$(document).ready(function () {
+													$("input[name=module_show_option]:radio").click(function () { // attack a click event on all radio buttons with name 'radiogroup'
+
+														if ($(this).val() == 'all') {
+															$("input[name=module_menu_item_id]:checkbox").attr("disabled", "disabled");
+														}  else if ($(this).val() == 'none') {
+															$("input[name=module_menu_item_id]:checkbox").attr("disabled", "disabled");
+														} else if ($(this).val() == 'selected') { //check which radio button is clicked
+															$("input[name=module_menu_item_id]:checkbox").removeAttr("disabled");
+														} else if ($(this).val() == 'except') { //check which radio button is clicked
+															$("input[name=module_menu_item_id]:checkbox").removeAttr("disabled");
+														}
+													});
+												});
+											</script>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="medium-12 columns">
+											<hr>
+											{% for menu in menus %}
+												{% if menu.menuitem_set.count >= 1 %}
+													<p><b>{{ menu.menu_menu_title }}</b></p>
+													{% for menu_item in menu_items %}
+														{% if menu_item.menu_item_menu_id == menu.id %}
+															<label class="select-label">
+																{% if current_module.module_show_option == "all" %}
+																	<input type="checkbox" name="module_menu_item_id" id="module_menu_item_id"
+																	       value="{{ menu_item.id }}" disabled>
+																	{{ menu_item.menu_item_title }}
+																{% elif current_module.module_show_option == "none" %}
+																	<input type="checkbox" name="module_menu_item_id" id="module_menu_item_id"
+																	       value="{{ menu_item.id }}" disabled>
+																	{{ menu_item.menu_item_title }}
+																{% else %}
+																		{% if menu_item in current_module.module_menu_item.all %}
+																			<input type="checkbox" name="module_menu_item_id" id="module_menu_item_id"
+																			       value="{{ menu_item.id }}" checked>
+																			{{ menu_item.menu_item_title }} ({{ menu_item.id }})
+																		{% else %}
+																			<input type="checkbox" name="module_menu_item_id" id="module_menu_item_id"
+																			       value="{{ menu_item.id }}">
+																			{{ menu_item.menu_item_title }}
+																		{% endif %}
+																{% endif %}
+															</label>
+														{% endif %}
+													{% endfor %}
+												{% endif %}
+											{% endfor %}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tabs-panel" id="module_layout">
+							<p>
+								Custom module Layout classes
+							</p>
+							{% if current_module.module_layout != None %}
+								<input type="text" name="module_layout" value="{{ current_module.module_layout }}">
+							{% else %}
+								<input type="text" name="module_layout">
+							{% endif %}
+						</div>
+
+						<div class="tabs-panel" id="{{ module_type.module_type_alias }}">
+							<div class="row">
+								<div class="medium-12 columns">
+									{% if module_type.module_type_alias == "custom-html" %}
+										{% include "blocks/add_module/mega_admin_add_module_custom_html.html" %}
+									{% elif module_type.module_type_alias == "article-accordion" %}
+										{% include "blocks/add_module/mega_admin_add_module_article_accordion.html" %}
+									{% elif module_type.module_type_alias == "article-slider" %}
+										{% include "blocks/add_module/mega_admin_add_module_article_slider.html" %}
+									{% elif module_type.module_type_alias == "article-list" %}
+										{% include "blocks/add_module/mega_admin_add_module_article_list.html" %}
+									{% elif module_type.module_type_alias == "image-slider" %}
+										{% include "blocks/add_module/mega_admin_add_module_image_slider.html" %}
+									{% endif %}
+								</div>
+							</div>
+						</div>
+						</form>
+
+						{% if module_type.module_type_alias == "image-slider" %}
+							<div class="tabs-panel" id="module_image_slider_content">
+								<div class="row">
+									<div class="medium-12 columns">
+										{% include "blocks/add_module/mega_admin_add_module_image_slider_content.html" %}
+									</div>
+								</div>
+							</div>
+						{% endif %}
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+{% endblock %}

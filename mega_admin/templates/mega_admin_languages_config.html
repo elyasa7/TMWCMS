@@ -1,0 +1,79 @@
+{% extends "mega_admin_main.html" %}
+{% load staticfiles %}
+
+{% block main-wrapper %}
+	{% include "mega_admin_top_menu.html" %}
+	{% include "mega_admin_languages_caption.html" %}
+
+	<div class="row padding-20-0" data-equalizer="mega_admin_wrapper">
+		<div class="medium-3 columns">
+			<div class="row">
+				<div class="medium-12 columns" data-equalizer-watch="mega_admin_wrapper">
+					{% include "languages_sidebar.html" %}
+				</div>
+			</div>
+		</div>
+		<div class="medium-9 columns">
+			<div class="row">
+				<div class="medium-12 columns white-bg" data-equalizer-watch="mega_admin_wrapper">
+					<div class="row">
+						<div class="medium-12 columns">
+							<h5>
+								Languages configuration
+							</h5>
+						</div>
+					</div>
+					<div class="row padding-20-0">
+						<div class="medium-12 columns">
+							<p>
+								In language configuration page you can make language configuration of your web site.
+								Though, you can make your website multilingual.
+							</p>
+							<p>
+								Currently there are only 3 languages supported (English, Russian, Turkish). However you
+								can translate on any language by yourself.
+							</p>
+							<p>
+								For additional information and documentation please refer to this page <a
+									href="https://cms.turkmenweb.pro/docs/language/language-configuration"
+									target="_blank"><b>Language configuration</b></a>
+							</p>
+						</div>
+					</div>
+					<div class="row padding-20-0">
+						<form method="post" action="/mega-admin/change-language-configuration/">
+						{% csrf_token %}
+							<div class="medium-11 columns">
+								<div class="float-left">
+									<label style="padding-right: 20px;">Site is multilingual</label>
+								</div>
+								<div class="switch tiny float-left">
+									{% if language_config.lang_config_multi == 1 %}
+										<input class="switch-input" id="yes-no" type="checkbox"
+										       name="lang_config_multi" checked>
+									{% elif language_config.lang_config_multi == 0 %}
+										<input class="switch-input" id="yes-no" type="checkbox"
+										       name="lang_config_multi">
+									{% else %}
+										<input class="switch-input" id="yes-no" type="checkbox"
+										       name="lang_config_multi">
+									{% endif %}
+									<label class="switch-paddle" for="yes-no">
+										<span class="switch-active" aria-hidden="true">Yes</span>
+										<span class="switch-inactive" aria-hidden="true">no</span>
+									</label>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="medium-1 columns">
+								<input type="submit" class="tiny button success" value="Save">
+							</div>
+						</form>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+{% endblock %}

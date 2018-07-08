@@ -1,0 +1,30 @@
+{% load staticfiles %}
+
+<div class="light-gray-bg">
+	<div class="row">
+		<div class="medium-10 columns">
+			<ul class="vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown" style="padding: 10px 0px;">
+				<li>
+					<button formaction="/mega-admin/content/save-category/" class="button tiny success">
+						<fa class="fa fa-plus-circle"></fa> Save
+					</button>
+				</li>
+				<li>
+					<button type="submit" class="button tiny success">
+						<fa class="fa fa-plus-circle"></fa> Save
+					</button>
+				</li>
+				<li class="padding-0-20">
+					<a href="/mega-admin/content/article-manager/" class="button tiny alert" style="padding: 8px;">
+						<fa class="fa fa-close"></fa> cancel
+					</a>
+				</li>
+			</ul>
+			<script>
+				$(window).on('changed.zf.mediaquery', function () {
+					$('.is-dropdown-submenu.invisible').removeClass('invisible');
+				});
+			</script>
+		</div>
+	</div>
+</div>

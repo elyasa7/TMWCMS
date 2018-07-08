@@ -1,0 +1,26 @@
+{% load staticfiles %}
+
+{% include "head.html" %}
+
+{% include "mainmenu.html" %}
+
+
+<!doctype html>
+<html lang="{{ lang_prefix }}">
+
+{% block head %}
+{% endblock %}
+
+{% block mainmenu_ru %}
+{% endblock %}
+
+{% block article %}
+{%  endblock %}
+    <script src="{% static "js/vendor/jquery.min.js" %}"></script>
+	<script src="{% static "js/vendor/what-input.min.js" %}"></script>
+	<script src="{% static "js/foundation.min.js" %}"></script>
+
+	<script>
+		$(document).foundation();
+	</script>
+</html>

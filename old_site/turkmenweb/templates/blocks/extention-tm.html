@@ -1,0 +1,57 @@
+{% load staticfiles %}
+
+{% block extention-ru %}
+
+<div class="extention">
+    <div class="row">
+        <div class="large-3 columns">
+            <div class="white-bg round-top">
+                <h4 class="centered ext-title">
+                    <a href="/{{ lang_prefix }}/activity/">Işjeň dynç alyŞ<br> we hyzmatlar </a>
+                </h4>
+            </div>
+            <div class="ext-img">
+                <img src="{% static "img/extention/arrow-down.png" %}" class="ext-arrow-down">
+                <img src="{% static "img/extention/01.jpg" %}">
+            </div>
+        </div>
+
+        <div class="large-3 columns">
+            <div class="ext-img">
+                <img src="{% static "img/extention/arrow-up.png" %}" class="ext-arrow-up">
+                <img src="{% static "img/extention/02.jpg" %}">
+            </div>
+            <div class="white-bg round-bottom">
+                <h4 class="centered ext-title">
+                    <a href="/{{ lang_prefix }}/restaurants/">Restoranlar<br>we Barlar</a>
+                </h4>
+            </div>
+        </div>
+
+        <div class="large-3 columns">
+            <div class="white-bg  round-top">
+                <h4 class="centered ext-title">
+                    <a href="/{{ lang_prefix }}/spa/">SPA<br>we Relaksiýa </a>
+                </h4>
+            </div>
+            <div class="ext-img">
+                <img src="{% static "img/extention/arrow-down.png" %}" class="ext-arrow-down">
+                <img src="{% static "img/extention/03.jpg" %}">
+            </div>
+        </div>
+
+        <div class="large-3 columns">
+            <div class="ext-img">
+                <img src="{% static "img/extention/arrow-up.png" %}" class="ext-arrow-up">
+                <img src="{% static "img/extention/05.jpg" %}">
+            </div>
+            <div class="white-bg round-bottom">
+                <h4 class="centered ext-title">
+                    <a href="/{{ lang_prefix }}/complex/">Rezidensiýa<br>Toplumy</a>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

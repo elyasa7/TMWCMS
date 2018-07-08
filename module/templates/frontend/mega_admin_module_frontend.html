@@ -1,0 +1,15 @@
+{% load staticfiles %}
+
+<div class="column {{ module.module_layout }}">
+	{% if module.module_type.module_type_alias == "custom-html" %}
+		{% include "modules/custom-html/module_custom_html.html" %}
+	{% elif module.module_type.module_type_alias == "article-accordion" %}
+		{% include "modules/article-accordion/module_article_accordion.html" %}
+	{% elif module.module_type.module_type_alias == "article-slider" %}
+		{% include "modules/article-slider/module_article_slider.html" %}
+	{% elif module.module_type.module_type_alias == "article-list" %}
+		{% include "modules/article-list/module_article_list.html" %}
+	{% elif module.module_type.module_type_alias == "image-slider" %}
+		{% include "modules/image-slider/module_image_slider.html" %}
+	{% endif %}
+</div>

@@ -1,0 +1,126 @@
+<h5>{{ module_type.module_type_title }}</h5>
+<label class="select-label" for="module_article_slider_category">
+	Select Category
+</label>
+
+<select name="module_article_slider_category" id="module_article_slider_category" required>
+	{% for category in categories %}
+		{% if current_module.module_article_slider_module_key.module_article_slider_category_id == category.id %}
+			<option value="{{ category.id }}" selected>
+				{{ category.article_category_title }}
+			</option>
+		{% else %}
+			<option value="{{ category.id }}">
+				{{ category.article_category_title }}
+			</option>
+		{% endif %}
+	{% endfor %}
+</select>
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_article_slider_count">
+	Items count
+</label>
+
+{% if current_module %}
+<input type="text" name="module_article_slider_count" id="module_article_slider_count" value="{{ current_module.module_article_slider_module_key.module_article_slider_count }}" required>
+{% else %}
+<input type="text" name="module_article_slider_count" id="module_article_slider_count" value="5" required>
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show only featured</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_slider_module_key.module_article_slider_feature == 1 %}
+		<input class="switch-input" id="slider_feature" type="checkbox" name="module_article_slider_feature" checked>
+	{% elif current_module.module_article_slider_module_key.module_article_accordion_feature == 0 %}
+		<input class="switch-input" id="slider_feature" type="checkbox" name="module_article_slider_feature">
+	{% else %}
+		<input class="switch-input" id="slider_feature" type="checkbox" name="module_article_slider_feature">
+	{% endif %}
+	<label class="switch-paddle" for="slider_feature">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show articles images</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_slider_module_key.module_article_slider_image == 1 %}
+		<input class="switch-input" id="slider_image" type="checkbox" name="module_article_slider_image" checked>
+	{% elif current_module.module_article_slider_module_key.module_article_slider_image == 0 %}
+		<input class="switch-input" id="slider_image" type="checkbox" name="module_article_slider_image">
+	{% else %}
+		<input class="switch-input" id="slider_image" type="checkbox" name="module_article_slider_image">
+	{% endif %}
+	<label class="switch-paddle" for="slider_image">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show article date</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_slider_module_key.module_article_slider_date == 1 %}
+		<input class="switch-input" id="slider_date" type="checkbox" name="module_article_slider_date" checked>
+	{% elif current_module.module_article_slider_module_key.module_article_accordion_date == 0 %}
+		<input class="switch-input" id="slider_date" type="checkbox" name="module_article_slider_date">
+	{% else %}
+		<input class="switch-input" id="slider_date" type="checkbox" name="module_article_slider_date">
+	{% endif %}
+	<label class="switch-paddle" for="slider_date">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show article category</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_article_slider_module_key.module_article_slider_parent == 1 %}
+		<input class="switch-input" id="slider_parent" type="checkbox" name="module_article_slider_parent" checked>
+	{% elif current_module.module_article_slider_module_key.module_article_accordion_parent == 0 %}
+		<input class="switch-input" id="slider_parent" type="checkbox" name="module_article_slider_parent">
+	{% else %}
+		<input class="switch-input" id="slider_parent" type="checkbox" name="module_article_slider_parent">
+	{% endif %}
+	<label class="switch-paddle" for="slider_parent">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_article_slider_button">
+	"Read More" text
+</label>
+{% if current_module %}
+<input type="text" name="module_article_slider_button" id="module_article_slider_button" value="{{ current_module.module_article_slider_module_key.module_article_slider_button }}" required>
+{% else %}
+<input type="text" name="module_article_slider_button" id="module_article_slider_button" value="Read more" required>
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+{% if current_module %}
+<input type="text" name="module_article_slider_id" value="{{ current_module.module_article_slider_module_key.id }}" class="hidden">
+{% endif %}
+

@@ -1,0 +1,10 @@
+<h5>{{ module_type.module_type_title }}</h5>
+<label>
+	Select menu
+	{% if current_module != None %}
+		<textarea id="summernote" name="module_custom_html_content"required>{{ current_module.module_custom_html_module_key.module_custom_html_content }}</textarea>
+		<input type="text" name="module_custom_html_id" value="{{ current_module.module_custom_html_module_key.id }}" class="hidden">
+	{% else %}
+		<textarea name="module_custom_html_content" id="summernote" cols="30" rows="10" required></textarea>
+	{% endif %}
+</label>

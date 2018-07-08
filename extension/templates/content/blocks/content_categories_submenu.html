@@ -1,0 +1,28 @@
+{% load staticfiles %}
+
+<div class="light-gray-bg">
+	<div class="row">
+		<div class="medium-10 columns">
+			<ul class="vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown" style="padding: 10px 0px;">
+				<li>
+					<a href="/mega-admin/content/add-category/" class="button tiny success" style="padding: 8px;">
+						<fa class="fa fa-plus-circle"></fa> New Category
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="medium-1 small-6 columns righted">
+			<label style="padding-top: 10px;">Show by</label>
+		</div>
+		<div class="medium-1 small-6 columns">
+			<div>
+				<select name="categories_show_by" style="margin-top: 5px; margin-bottom: 0px;" id="single-bsg-pilot">
+					<option value="2" selected>20</option>
+					<option value="2">30</option>
+					<option value="2">50</option>
+					<option value="2">100</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>

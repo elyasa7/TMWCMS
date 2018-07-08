@@ -1,0 +1,16 @@
+{% load staticfiles %}
+
+<div class="primary-bg">
+	<div class="row">
+		<div class="medium-3 columns">
+			<h5 class="caption-text">
+				<fa class="fa fa-globe"></fa>
+				{% if current_menu == "languages" %}
+				Languages
+				{% elif current_menu == "languages-config" %}
+				Languages Config
+				{% endif %}
+			</h5>
+		</div>
+	</div>
+</div>

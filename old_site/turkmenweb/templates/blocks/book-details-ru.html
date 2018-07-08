@@ -1,0 +1,36 @@
+{% load staticfiles %}
+
+{% block details %}
+<div class="sidebar-b">
+<h5 class="centered">Детали бронирования</h5>
+<ul class="clear-list" style="font-size: 90%;">
+    <li>
+        <strong>Дата заезда:</strong> {{ indate }}
+    </li>
+    <li>
+        <strong>Дата выезда:</strong> {{ outdate }}
+    </li>
+    <li>
+        <strong>Кол-во ночей:</strong> {{ nights }}
+    </li>
+    <li>
+        <strong>Взрослых:</strong> {{ adult }}
+    </li>
+    <li>
+        <strong>Детей:</strong> {{ child }}
+    </li>
+    <li>
+        <strong>Стоимость за сутки:</strong> от {{ price }} $ до {{ max_price }} $
+    </li>
+    <hr>
+    <!--
+    <li>
+        <h5 class="primary-color">
+            <strong>ИТОГО:</strong> <span style="font-size: 120%"> {{ total }} $</span>
+        </h5>
+        <span class="subheader">(с НДС)</span>
+    </li>-->
+</ul>
+</div>
+
+{% endblock %}

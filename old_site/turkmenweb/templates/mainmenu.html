@@ -1,0 +1,26 @@
+{% load staticfiles %}
+
+{% block mainmenu_ru %}
+
+<div class="primary-bg menu">
+	<div class="row">
+		<div class="small-2 columns">
+			<a href="/"><img src="{% static "img/logo.png" %}"></a>
+		</div>
+
+		<div clas="small-10 columns">\
+			<div class="mainmenu righted">
+				<ul>
+					{% for menu in menus %}
+
+					<li>
+						<a href="{{ menu.menu_link }}" alt="{{ menu.menu_description }}">{{ menu.menu_title }}</a>
+					</li>
+					
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

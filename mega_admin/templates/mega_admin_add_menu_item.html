@@ -1,0 +1,154 @@
+{% extends "mega_admin_main.html" %}
+{% load staticfiles %}
+
+{% block main-wrapper %}
+{% include "mega_admin_top_menu.html" %}
+{% include "mega_admin_menu_manager_caption.html" %}
+<form action="/mega-admin/menu-items/save-menu-item/" method="post">
+		{% csrf_token %}
+		{% include "mega_admin_add_menu_item_submenu.html" %}
+
+
+		<div class="row padding-20-0" data-equalizer="mega_admin_wrapper">
+			<div class="medium-8 columns" data-equalizer-watch="mega_admin_wrapper">
+				<div class="row">
+					<div class="medium-12 columns white-bg" style="border: 1px solid #cecece; border-radius: 10px;">
+						<div class="padding-20-0">
+							<div class="row">
+								<div class="medium-12 columns">
+									<label>
+										Menu Item Title *
+										<input type="text" placeholder="Menu item title" name="menu_item_title"
+										       value="{{ current_menu_item.menu_item_title }}" required>
+									</label>
+									<label>
+										Menu Item SubTitle (optional)
+										<input type="text" placeholder="Menu item subtitle" name="menu_item_subtitle"
+										       value="{{ current_menu_item.menu_item_subtitle }}">
+									</label>
+									<hr>
+									{% if menu_item_type.menu_type_alias == "system-custom-url" %}
+										{% include "menu_items_add_custom_url.html" %}
+									{% elif menu_item_type.menu_type_alias == "single-article" %}
+										{% include "menu_items_add_single_article.html" %}
+									{% elif menu_item_type.menu_type_alias == "article-category-blog" %}
+										{% include "menu_items_add_category_blog.html" %}
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="medium-4 columns" data-equalizer-watch="mega_admin_wrapper">
+				<div class="row">
+					<div class="medium-12 columns">
+
+						<div class="dashboard-sidebar">
+
+							<div class="clearfix"></div>
+
+							<div class="float-left">
+								<label>Menu item is published</label>
+							</div>
+							<div class="switch tiny float-right">
+								{% if current_menu_item.menu_item_published == 1 %}
+									<input class="switch-input" id="yes-no" type="checkbox" name="menu_item_published" checked>
+								{% elif current_menu_item.menu_item_published == 0 %}
+									<input class="switch-input" id="yes-no" type="checkbox" name="menu_item_published">
+								{% else %}
+									<input class="switch-input" id="yes-no" type="checkbox" name="menu_item_published" checked>
+								{% endif %}
+								<label class="switch-paddle" for="yes-no">
+									<span class="switch-active" aria-hidden="true">Yes</span>
+									<span class="switch-inactive" aria-hidden="true">no</span>
+								</label>
+							</div>
+
+							<div class="clearfix"></div>
+
+							<label>
+								Select menu
+								<select name="menu_item_menu" required>
+									{% for menu in menus %}
+										{% if current_menu_item.menu_item_menu_id == menu.id %}
+										<option value="{{ menu.id }}" selected>
+											{{ menu.menu_menu_title }}
+										</option>
+										{% else %}
+										<option value="{{ menu.id }}">
+											{{ menu.menu_menu_title }}
+										</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							</label>
+							<div class="clearfix"></div>
+							<label>
+								Menu Item Language
+								<select name="menu_item_language" required>
+									{% for language in languages %}
+										{% if current_menu_item != None %}
+											{% if current_menu_item.menu_item_language_id == language.id %}
+												<option value="{{ language.id }}" selected>
+													{{ language.lang_title_native }}
+												</option>
+											{% else %}
+												<option value="{{ language.id }}">
+													{{ language.lang_title_native }}
+												</option>
+											{% endif %}
+										{% else %}
+											{% if language.lang_sef == "xx" %}
+											<option value="{{ language.id }}" selected>
+												{{ language.lang_title_native }}
+											</option>
+											{% else %}
+											<option value="{{ language.id }}">
+												({{ language.lang_sef }}) {{ language.lang_title_native }}
+											</option>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+								</select>
+							</label>
+
+							{% if current_menu_item != None %}
+
+								<div class="clearfix"></div>
+
+								<label>
+									Has parent item
+									<select name="menu_item_parent_item">
+										<option value="">
+											No parrent
+										</option>
+										{% for menu_item in menu_items %}
+											{% if current_menu_item.menu_item_parent_item.id == menu_item.id %}
+											<option value="{{ menu_item.id }}" selected>
+												{{ menu_item.menu_item_title }}
+											</option>
+											{% else %}
+											<option value="{{ menu_item.id }}">
+												{{ menu_item.menu_item_title }}
+											</option>
+											{% endif %}
+										{% endfor %}
+									</select>
+								</label>
+							{% endif %}
+							<div class="clearfix"></div>
+							<p>
+								{% if current_menu_item != None %}
+									<input type="text" value="{{ current_menu_item.id }}" class="hidden" name="current_menu_item_id">
+									<input type="text" value="{{ current_menu_item_type.menu_type_alias }}" class="hidden" name="menu_item_type">
+								{% endif %}
+								<input class="hidden" type="text" name="menu_item_type" value="{{ menu_item_type.menu_type_alias }}">
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+	</form>
+	</div>
+{% endblock %}

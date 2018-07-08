@@ -1,0 +1,74 @@
+{% load staticfiles %}
+
+{% block mainbottom-ru %}
+
+<div class="bottom">
+    <div class="row">
+        <div class="large-12 columns">
+            <script src="http://maps.googleapis.com/maps/api/js"></script>
+            
+            <script>
+                function initialize() {
+                    var mapProp = {
+                        center: new google.maps.LatLng(37.929213, 58.373510),
+                        zoom: 15,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+                    var marker = new google.maps.Marker({
+                        position: (37.929213, 58.373510),
+                        map: googleMap,
+                        title: 'OGUZKENT HOTEL'
+                    });
+
+                }
+                google.maps.event.addDomListener(window, 'load', initialize);
+            </script>
+            </head>
+
+            <body>
+            <div id="googleMap" style="width: 100%; height: 400px;"></div>
+        </div>
+        
+        <!--
+        <div class="large-4 columns">
+            <h4>Связаться с отелем</h4>
+            <hr>
+            <script type="text/javascript">
+                function checkform()
+                {
+                    if(document.register.name.value == "")
+                        {alert("Пожалуйста введите своё Имя"); return false;}
+                    if(document.register.email.value == "")
+                        {alert("Пожалуйста введите свой E-mail"); return false;}
+                    if(document.register.subject.value == "")
+                        {alert("Пожалуйста введите тему сообщения"); return false;}
+                    if(document.register.message.value == "")
+                        {alert("Пожалуйста введите своё сообщение"); return false;}
+                    else
+                        {document.register.submit();}
+                }
+            </script>
+            <form action="/ru/sendmail/" method="POST" name="register">
+                {% csrf_token %}
+                <label for="name" value="">
+                    Ваше имя: <input type="text" id="name">
+                </label>
+                <label for="email" value="">
+                    Ваш E-mail адрес: <input type="text" id="email">
+                </label>
+                <label for="subject" value="">
+                    Тема: <input type="text" id="subject">
+                </label>
+                <label for="message" value="">
+                    Сообщение: <textarea type="text" id="message" rows="2"></textarea>
+                </label>
+
+                <input class="small button" onclick="return checkform()" type="submit" value="Отправить">
+            </form>
+        </div>-->
+    </div>
+</div>
+
+{% endblock %}

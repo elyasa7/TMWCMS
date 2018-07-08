@@ -1,0 +1,78 @@
+<div class="padding-20-0">
+	<table class="hover">
+		<thead>
+		<tr>
+			<td>
+				ID
+			</td>
+			<td>
+				Title
+			</td>
+			<td class="centered">
+				Type
+			</td>
+			<td class="centered">
+				Showing
+			</td>
+			<td class="centered">
+				Languages
+			</td>
+			<td class="centered">
+				Published
+			</td>
+		</tr>
+		</thead>
+		<tbody>
+		{% for module in modules %}
+			<tr>
+				<td>
+					{{ module.id }}
+				</td>
+				<td>
+					<a href="/mega-admin/module/add-module/?id={{ module.id }}" class="primary-color">
+						{{ module.module_title }}
+					</a>
+				</td>
+				<td class="centered">
+					{{ module.module_type.module_type_alias }}
+				</td>
+				<td class="centered">
+					{{ module.module_show_option }}
+				</td>
+				<td class="centered">
+					{% if module.module_language.lang_sef == "xx" %}
+						All
+					{% else %}
+						{{ module.module_language.lang_sef }}
+					{% endif %}
+				</td>
+				<td class="centered">
+					{% if module.module_published == 1 %}
+						<form action="/mega-admin/module/change-module-state/" method="post" id="change-module-state-{{ module.id }}">
+							{% csrf_token %}
+							<input name="module_id" value="{{ module.id }}" style="display: none">
+							<a onclick="document.getElementById('change-module-state-{{ module.id }}').submit();" class="tiny button light-gray-bg">
+								<fa class="fa fa-check green"></fa>
+							</a>
+						</form>
+					{% else %}
+						<form action="/mega-admin/module/change-module-state/" method="post" id="change-module-state-{{ module.id }}">
+							{% csrf_token %}
+							<input name="module_id" value="{{ module.id }}" style="display: none">
+							<a onclick="document.getElementById('change-module-state-{{ module.id }}').submit();" class="tiny button light-gray-bg">
+								<fa class="fa fa-close" style="color: red;"></fa>
+							</a>
+						</form>
+					{% endif %}
+				</td>
+			</tr>
+		{% empty %}
+			<tr>
+				<td colspan="5" class="centered">
+					<h3>Yet there are no modules added</h3>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>

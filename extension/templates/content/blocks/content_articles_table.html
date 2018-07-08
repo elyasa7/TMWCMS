@@ -1,0 +1,74 @@
+{% load staticfiles %}
+
+<div class="padding-20-0">
+	<table class="hover">
+		<thead>
+		<tr>
+			<td>
+				ID
+			</td>
+			<td>
+				Title
+			</td>
+			<td class="centered">
+				Category
+			</td>
+			<td class="centered">
+				Languages
+			</td>
+			<td class="centered">
+				Published
+			</td>
+		</tr>
+		</thead>
+		<tbody>
+		{% for article in articles %}
+			<tr>
+				<td>
+					{{ article.id }}
+				</td>
+				<td>
+					<a href="/mega-admin/content/add-article/?id={{ article.id }}" class="primary-color">
+						{{ article.article_title }}
+					</a>
+				</td>
+				<td class="centered">
+					{{ article.article_category }}
+				</td>
+				<td class="centered">
+					{% if article.article_language.lang_sef == "xx" %}
+						All
+					{% else %}
+						{{ article.article_language.lang_sef }}
+					{% endif %}
+				</td>
+				<td class="centered">
+					{% if article.article_published == 1 %}
+						<form action="/mega-admin/content/change-article-state/" method="post" id="change-article-state-{{ article.id }}">
+							{% csrf_token %}
+							<input name="article_id" value="{{ article.id }}" style="display: none">
+							<a onclick="document.getElementById('change-article-state-{{ article.id }}').submit();" class="tiny button light-gray-bg">
+								<fa class="fa fa-check green"></fa>
+							</a>
+						</form>
+					{% else %}
+						<form action="/mega-admin/content/change-article-state/" method="post" id="change-article-state-{{ article.id }}">
+							{% csrf_token %}
+							<input name="article_id" value="{{ article.id }}" style="display: none">
+							<a onclick="document.getElementById('change-article-state-{{ article.id }}').submit();" class="tiny button light-gray-bg">
+								<fa class="fa fa-close" style="color: red;"></fa>
+							</a>
+						</form>
+					{% endif %}
+				</td>
+			</tr>
+		{% empty %}
+			<tr>
+				<td colspan="5" class="centered">
+					<h3>Yet there are no articles added</h3>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>

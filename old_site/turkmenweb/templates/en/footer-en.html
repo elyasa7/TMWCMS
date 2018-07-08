@@ -1,0 +1,86 @@
+{% load staticfiles %}
+
+{% block footer-ru %}
+
+<!-- NACHALO FOOTER'A DLYA PLANSHETA I BOLSHE -->
+    <div class="footer hide-for-small-only">
+        <div class="row">
+            <div class="medium-3 columns">
+                <img src="{% static "img/system/logo.png" %}" style="max-width: 170px;">
+            </div>
+            <div class="medium-3 columns">
+                <ul>
+                    <li>
+                        <a href="/{{ lang_prefix }}/">Homepage</a>
+                    </li>
+                    <li>
+                        <a href="/{{ lang_prefix }}/accommodation/">Accommodation</a>
+                    </li>
+                    <li>
+                        <a href="/{{ lang_prefix }}/activity/">Activities</a>
+                    </li>
+                    <li><a href="/{{ lang_prefix }}/about/">About Us</a></li>
+                </ul>
+            </div>
+            <div class="medium-3 columns">
+                <ul>
+                    <li>
+                        <a href="/{{ lang_prefix }}/restaurants/">Restaurants and Bars</a>
+                    </li>
+                    <li>
+                        <a href="/{{ lang_prefix }}/spa/">SPA</a>
+                    </li>
+                    <li>
+                        <a href="/{{ lang_prefix }}/complex/">Residence</a>
+                    </li>
+                    <li>
+                        <a href="/{{ lang_prefix }}/photogallery/">Photo Gallery</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="medium-3 columns" style="padding-top: 20px;">
+                <p class="white small-font" style="margin-bottom: 5px; text-indent: 0px;">
+                    231, Bitarap Turkmenistan Avenue, <br>Ashgabad, 744000, Turkmenistan
+                </p>
+                <p class="white small-font" style="margin-bottom: 5px; text-indent: 0px;">Tel: +993 (12) 449500</p>
+                <p class="white small-font" style="margin-bottom: 5px; text-indent: 0px;">Fax: +993 (12) 449501/59</p>
+                <p class="white small-font" style="margin-bottom: 5px; text-indent: 0px;">E-mail: info@oguzkenthotel.com</p>
+                <div class="">
+                    <a class="small button" href="/{{ lang_prefix }}/contacts/" class="" style="background: #FFF; color: #565656;">Contact Us</a>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: -20px;">
+            <hr style="min-width: 100%;">
+        </div>
+
+        <h6 class="white copyright">Copyright 2016 - Hotel "Oguzkent". All rights reserved.</h6>
+    </div>
+<!-- KONEC FOOTER'A DLYA PLANSHETA I BOLSHE -->
+
+
+
+<!-- NACHALO FOOTER'A DLYA MOBILNOY VERSII -->
+
+    <div class="footer show-for-small-only">
+        <div class="row">
+            <div class="small-12 columns centered">
+                <img src="{% static "img/system/logo.png" %}" style="max-width: 170px;">
+            </div>
+            
+            <div class="small-12 columns centered" style="padding-top: 20px;">
+                <a class="small button" href="/{{ lang_prefix }}/contacts/" class="" style="background: #FFF; color: #565656;">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+        <div style="margin-top: -20px;">
+            <hr style="min-width: 100%;">
+        </div>
+
+        <h6 class="white copyright">Copyright 2016 - Hotel "Oguzkent". All rights reserved.</h6>
+    </div>
+
+<!-- KONEC FOOTER'A DLYA MOBILNOY VERSII -->
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% load staticfiles %}
+
+{% block simspa-ru %}
+    <div class="centered sidebar-b">
+    {% for simspa in simspas %}
+    <h6>
+        {% if simspa.id == article.id %}
+        <a href="/ru/spa/{{ simspa.id }}/" ><strong>{{ simspa.article_title }}</strong></a>
+        {% else %}
+        <a href="/ru/spa/{{ simspa.id }}/" >{{ simspa.article_title }}</a>
+        {% endif %}
+    </h6>
+    {% endfor %}
+    </div>
+{% endblock %}

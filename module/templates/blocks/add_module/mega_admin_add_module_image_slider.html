@@ -1,0 +1,114 @@
+<h5>{{ module_type.module_type_title }}</h5>
+
+
+<label class="select-label" for="module_image_slider_speed">
+	Slider speed
+</label>
+
+{% if current_module %}
+<input type="text" name="module_image_slider_speed" id="module_image_slider_speed" value="{{ current_module.module_image_slider_module_key.module_image_slider_speed }}" required>
+{% else %}
+<input type="text" name="module_image_slider_speed" id="module_image_slider_speed" value="2000" required>
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show navigation arrows</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_image_slider_module_key.module_image_slider_arrow == 1 %}
+		<input class="switch-input" id="slider_arrow" type="checkbox" name="module_image_slider_arrow" checked>
+	{% elif current_module.module_image_slider_module_key.module_image_slider_arrow == 0 %}
+		<input class="switch-input" id="slider_arrow" type="checkbox" name="module_image_slider_arrow">
+	{% else %}
+		<input class="switch-input" id="slider_arrow" type="checkbox" name="module_image_slider_arrow">
+	{% endif %}
+	<label class="switch-paddle" for="slider_arrow">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show navigation bullets</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_image_slider_module_key.module_image_slider_bullet == 1 %}
+		<input class="switch-input" id="slider_bullet" type="checkbox" name="module_image_slider_bullet" checked>
+	{% elif current_module.module_image_slider_module_key.module_image_slider_bullet == 0 %}
+		<input class="switch-input" id="slider_bullet" type="checkbox" name="module_image_slider_bullet">
+	{% else %}
+		<input class="switch-input" id="slider_bullet" type="checkbox" name="module_image_slider_bullet">
+	{% endif %}
+	<label class="switch-paddle" for="slider_bullet">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+<hr>
+<div class="clearfix"></div>
+
+<div class="float-left">
+	<label>Show navigation thumbnails</label>
+</div>
+<div class="switch tiny float-right">
+	{% if current_module.module_image_slider_module_key.module_image_slider_thumb == 1 %}
+		<input class="switch-input" id="slider_thumb" type="checkbox" name="module_image_slider_thumb" checked>
+	{% elif current_module.module_image_slider_module_key.module_image_slider_thumb == 0 %}
+		<input class="switch-input" id="slider_thumb" type="checkbox" name="module_image_slider_thumb">
+	{% else %}
+		<input class="switch-input" id="slider_thumb" type="checkbox" name="module_image_slider_thumb">
+	{% endif %}
+	<label class="switch-paddle" for="slider_thumb">
+		<span class="switch-active" aria-hidden="true">Yes</span>
+		<span class="switch-inactive" aria-hidden="true">no</span>
+	</label>
+</div>
+
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_image_slider_thumb_width">
+	Thumbnail Width (In px)
+</label>
+{% if current_module %}
+<input type="text" name="module_image_slider_thumb_width" id="module_image_slider_thumb_width" value="{{ current_module.module_image_slider_module_key.module_image_slider_thumb_width }}" required>
+{% else %}
+<input type="text" name="module_image_slider_thumb_width" id="module_image_slider_thumb_width" value="80" required>
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_image_slider_thumb_height">
+	Thumbnail Height (In px)
+</label>
+{% if current_module %}
+<input type="text" name="module_image_slider_thumb_height" id="module_image_slider_thumb_height" value="{{ current_module.module_image_slider_module_key.module_image_slider_thumb_height }}" required>
+{% else %}
+<input type="text" name="module_image_slider_thumb_height" id="module_image_slider_thumb_height" value="45" required>
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+<label class="select-label" for="module_image_slider_layout">
+	Custom layout class (leave blank)
+</label>
+{% if current_module.module_image_slider_module_key.module_image_slider_layout != None %}
+<input type="text" name="module_image_slider_layout" id="module_image_slider_layout" value="{{ current_module.module_image_slider_module_key.module_image_slider_layout }}">
+{% else %}
+<input type="text" name="module_image_slider_layout" id="module_image_slider_layout" value="">
+{% endif %}
+
+<hr>
+<div class="clearfix"></div>
+
+{% if current_module %}
+<input type="text" name="module_image_slider_id" value="{{ current_module.module_image_slider_module_key.id }}" class="hidden">
+{% endif %}
+

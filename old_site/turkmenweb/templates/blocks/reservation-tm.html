@@ -1,0 +1,82 @@
+{% load staticfiles %}
+
+{% block reservation_ru %}
+
+
+<script type="text/javascript">
+    function checkReserve()
+    {
+        if(document.reserve.dpd1.value == "")
+            {alert("Giriş senesini belläň"); return false;}
+        if(document.reserve.dpd2.value == "")
+            {alert("Çykyş senesini belläň"); return false;}
+        if(document.reserve.adult.value == "")
+            {alert("Ýetişkin adamlaryň sanysyny belläň"); return false;}
+        else
+            {document.reserve.submit();}
+    }
+</script>
+<script>
+function process()
+{
+    var url="/tm/suites/?ind=" + document.getElementById("dpd1").value + "&otd=" + document.getElementById("dpd2").value + "&adult=" + document.getElementById("adult").value + "&child=" + document.getElementById("child").value;
+    location.href=url;
+    return false;
+    }
+</script>
+<div class="small-12 columns" style="background: rgba(0, 0, 0, 0.7);">
+    <h5 class="white" style="padding: 10px; width: 100%; text-align: center;">
+        ONLAÝN BRONLAMAK
+    </h5>
+
+    <hr class="no-margin no-padding" style="margin: -10px -14px 20px; border-color: #765931;">
+    <form onSubmit="return process(); " name="reserve">
+        
+        <div class="small-6 columns">
+            <span class="white"><small>Giriş:</small></span>
+            <input type="text" class="span2" id="dpd1" value="{{ today|date:"m/d/Y" }}">
+        </div>
+        <div class="small-6 columns">
+            <span class="white"><small>Çykyş:</small></span>
+            <input type="text" class="span2" id="dpd2" value="{{ tomorrow|date:"m/d/Y" }}">
+        </div>
+        <hr class="no-margin no-padding" style="margin: 0px -14px 2px; border-color: rgba(0, 0, 0, 0);">
+        <div class="small-3 columns">
+            <select id="adult">
+                <option id="op0" value="0">0</option>
+                <option id="op1" value="1" selected>1</option>
+                <option id="op2" value="2">2</option>
+                <option id="op3" value="3">3</option>
+                <option id="op4" value="4">4</option>
+                <option id="op5" value="5">5</option>
+                <option id="op6" value="6">6</option>
+                <option id="op7" value="7">7</option>
+                <option id="op8" value="8">8</option>
+                <option id="op9" value="9">9</option>
+                <option id="op10" value="10">10</option>
+            </select>
+            <span class="white"><small>Ýetişkin</small></span>
+        </div>
+        <div class="small-3 columns">
+            <select id="child">
+                <option id="opt0" value="0" selected>0</option>
+                <option id="opt1" value="1">1</option>
+                <option id="opt2" value="2">2</option>
+                <option id="opt3" value="3">3</option>
+                <option id="opt4" value="4">4</option>
+                <option id="opt5" value="5">5</option>
+                <option id="opt6" value="6">6</option>
+                <option id="opt7" value="7">7</option>
+                <option id="opt8" value="8">8</option>
+                <option id="opt9" value="9">9</option>
+                <option id="opt10" value="10">10</option>
+            </select>
+            <span class="white"><small>Çaga</small></span>
+        </div>
+        <div class="small-6  columns">
+            <input type="submit" class="button" onclick="" value="Gözleg" style="font-size: 70%;">
+        </div>
+    </form>
+</div>
+<script src="{% static "js/datepicker.js" %}"></script>
+{% endblock %}

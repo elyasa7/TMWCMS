@@ -1,0 +1,76 @@
+{% extends "mega_admin_main.html" %}
+{% load staticfiles %}
+
+{% block main-wrapper %}
+	{% include "mega_admin_top_menu.html" %}
+	{% include "captions/mega_admin_module_caption.html" %}
+	{% include "blocks/mega_admin_modules_submenu.html" %}
+
+	<div class="row padding-20-0" data-equalizer="mega_admin_wrapper">
+{#		<div class="medium-3 columns"><!-- After adding sidebar, needs to add medium-3-->#}
+{#			<div class="row">#}
+{#				<div class="medium-12 columns" data-equalizer-watch="mega_admin_wrapper">#}
+{##}
+{#				</div>#}
+{#			</div>#}
+{#		</div>#}
+		<div class="medium-12 columns">
+			<div class="row">
+				<div class="medium-12 columns white-bg" data-equalizer-watch="mega_admin_wrapper">
+					{% include "blocks/mega_admin_modules_table.html" %}
+
+					<div>
+						<ul class="pagination">
+							{% if modules.has_previous %}
+								<li class="arrow">
+									<a href="/mega-admin/module/module-manager/{{ modules.previous_page_number }}/">
+										&laquo;
+									</a>
+								</li>
+							{% else %}
+								<li class="arrow unavailable">
+									<a>
+										&laquo;
+									</a>
+								</li>
+							{% endif %}
+
+							{% for page in modules.paginator.page_range %}
+								{% if page == modules.number %}
+									<li class="current">
+										<a>
+											{{ page }}
+										</a>
+									</li>
+								{% else %}
+									<li>
+										<a href="/mega-admin/module/module-manager/{{ page }}/">
+											{{ page }}
+										</a>
+									</li>
+								{% endif %}
+							{% endfor %}
+
+							{% if modules.has_next %}
+								<li class="arrow">
+									<a href="/mega-admin/module/module-manager/{{ modules.next_page_number }}/">
+										&raquo;
+									</a>
+								</li>
+							{% else %}
+								<li class="arrow unavailable">
+									<a>
+										&raquo;
+									</a>
+								</li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+				<div class="medium-12 columns">
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

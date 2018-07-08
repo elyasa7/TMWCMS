@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+
+{% load staticfiles %}
+
+{% block article %}
+
+<body>
+<div class="wrapper">
+    <div class="content">
+        {% block mainmenu_ru %}
+        {% endblock %}
+    
+        {% autoescape off %}
+            {{ article.article_text }}
+        {% endautoescape %}
+    </div>
+    {% include "footer.html" %}
+
+</div>
+</body>
+{% endblock %}

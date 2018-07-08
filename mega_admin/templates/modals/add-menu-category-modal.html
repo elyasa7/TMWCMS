@@ -1,0 +1,26 @@
+<div class="reveal" id="add-menu-category-modal" data-reveal>
+	<h4>Create new menu category</h4>
+	<hr>
+	<form action="/mega-admin/add-menu-category/" method="post">
+		{% csrf_token %}
+		<label>
+			<p>Menu category title</p>
+			<input type="text" placeholder="menu category title" name="menu_category_title" required>
+		</label>
+		<label>
+			<p>Menu category alias</p>
+			<input type="text" placeholder="menu category alias" name="menu_category_alias" required>
+		</label>
+		<label>
+			<p>Menu category description</p>
+			<input type="text" placeholder="menu category description" name="menu_category_description" required>
+		</label>
+		<button type="button" class="button alert" data-close aria-label="Close modal">
+			Cancel
+		</button>
+		<input type="submit" class="button success" value="Save">
+	</form>
+	<button class="close-button" data-close aria-label="Close modal" type="button">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>

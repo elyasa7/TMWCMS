@@ -1,0 +1,32 @@
+{% extends "mega_admin_main.html" %}
+{% load staticfiles %}
+
+{% block main-wrapper %}
+	{% include "mega_admin_top_menu.html" %}
+	{% include "captions/mega_admin_module_caption.html" %}
+
+	<div class="row padding-20-0" data-equalizer="mega_admin_wrapper">
+		<div class="medium-12 columns">
+			<div class="row">
+				<div class="medium-12 columns white-bg" data-equalizer-watch="mega_admin_wrapper">
+					<table class="hover">
+						<tbody>
+							{% for module_type in module_types %}
+								<tr>
+									<td>
+										<a href="/mega-admin/module/add-module/?module_type_id={{ module_type.module_type_alias }}">
+											{{ module_type.module_type_title }}
+										</a>
+									</td>
+									<td>
+										{{ module_type.module_type_description }}
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

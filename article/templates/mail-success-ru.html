@@ -1,0 +1,33 @@
+{% extends "main-ru.html" %}
+
+{% load staticfiles %}
+
+{% block article %}
+
+<body>
+{% include "loading.html" %}
+
+    <div class="filler">
+        <img src="{% static "img/system/filler.png" %}" style="height: 135px;">
+    </div>
+<div class="row" style="padding: 100px 0;">
+    <div class="small-offset-3 small-2 columns">
+        <img src="{% static "img/system/email-sent.png" %}">
+    </div>
+    <div class="small-5 columns float-left">
+        <h1>Ваше письмо успешно отправлено</h1>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+      setTimeout(function() {
+       window.location.href = "/ru/"
+      }, 3000);
+    });
+</script>
+
+        {% include "footer-ru.html" %}
+{% endblock %}

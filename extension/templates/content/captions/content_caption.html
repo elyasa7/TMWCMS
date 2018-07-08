@@ -1,0 +1,15 @@
+{% load staticfiles %}
+
+<div class="primary-bg">
+	<div class="row">
+		<div class="medium-12 columns">
+			<h5 class="caption-text">
+				{% if current_category %}
+					<fa class="fa fa-folder-open"></fa> {{ caption }}: {{ current_category.article_category_title }}
+				{% else %}
+					<fa class="fa fa-folder-open"></fa> {{ caption }}
+				{% endif %}
+			</h5>
+		</div>
+	</div>
+</div>

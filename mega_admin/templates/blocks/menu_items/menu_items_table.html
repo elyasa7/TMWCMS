@@ -1,0 +1,166 @@
+<div class="padding-20-0">
+	<table class="hover">
+		<thead>
+		<tr>
+			<td>
+				ID
+			</td>
+			<td>
+				Title
+			</td>
+			<td class="centered">
+				Language
+			</td>
+			<td class="centered">
+				Menu
+			</td>
+			<td class="centered">
+				Type
+			</td>
+			<td class="centered">
+				Published
+			</td>
+		</tr>
+		</thead>
+		<tbody>
+		{% for menu_item in menu_items %}
+			{% if menu_item.menu_item_parent_item.id <= 0 %}
+				<tr>
+					<td>
+						{{ menu_item.id }}
+					</td>
+					<td>
+						<a href="/mega-admin/add-menu-item/?id={{ menu_item.id }}">
+							{{ menu_item.menu_item_title }}
+						</a><br>
+						<span class="tiny-text">{{ menu_item.menu_item_alias }}</span>
+					</td>
+					<td class="centered">
+						{{ menu_item.menu_item_language.lang_title_native }}
+					</td>
+					<td class="centered">
+						{{ menu_item.menu_item_menu }}
+					</td>
+					<td class="centered">
+						{{ menu_item.menu_item_type }}
+					</td>
+					<td class="centered">
+						{% if menu_item.menu_item_published == 1 %}
+							<form action="/mega-admin/menu-items/change-item-state/" method="post" id="change-item-state-{{ menu_item.id }}">
+								{% csrf_token %}
+								<input name="menu_item_id" value="{{ menu_item.id }}" style="display: none">
+								<a onclick="document.getElementById('change-item-state-{{ menu_item.id }}').submit();" class="tiny button light-gray-bg">
+									<fa class="fa fa-check green"></fa>
+								</a>
+							</form>
+						{% else %}
+							<form action="/mega-admin/menu-items/change-item-state/" method="post" id="change-item-state-{{ menu_item.id }}">
+								{% csrf_token %}
+								<input name="menu_item_id" value="{{ menu_item.id }}" style="display: none">
+								<a onclick="document.getElementById('change-item-state-{{ menu_item.id }}').submit();" class="tiny button light-gray-bg">
+									<fa class="fa fa-close" style="color: red;"></fa>
+								</a>
+							</form>
+						{% endif %}
+					</td>
+				</tr>
+				{% for sub_item in menu_items %}
+					{% if sub_item.menu_item_parent_item.id == menu_item.id %}
+						<tr>
+							<td>
+								{{ sub_item.id }}
+							</td>
+							<td>
+								|-- <a href="/mega-admin/add-menu-item/?id={{ sub_item.id }}">
+									{{ sub_item.menu_item_title }}
+								</a><br>
+								<span class="tiny-text">{{ sub_item.menu_item_subtitle }}</span>
+							</td>
+							<td class="centered">
+								{{ sub_item.menu_item_language.lang_title_native }}
+							</td>
+							<td class="centered">
+								{{ sub_item.menu_item_menu }}
+							</td>
+							<td class="centered">
+								{{ sub_item.menu_item_type }}
+							</td>
+							<td class="centered">
+								{% if sub_item.menu_item_published == 1 %}
+									<form action="/mega-admin/menu-items/change-item-state/" method="post" id="change-item-state-{{ sub_item.id }}">
+										{% csrf_token %}
+										<input name="menu_item_id" value="{{ sub_item.id }}" style="display: none">
+										<a onclick="document.getElementById('change-item-state-{{ sub_item.id }}').submit();" class="tiny button light-gray-bg">
+											<fa class="fa fa-check green"></fa>
+										</a>
+									</form>
+								{% else %}
+									<form action="/mega-admin/menu-items/change-item-state/" method="post" id="change-item-state-{{ sub_item.id }}">
+										{% csrf_token %}
+										<input name="menu_item_id" value="{{ sub_item.id }}" style="display: none">
+										<a onclick="document.getElementById('change-item-state-{{ sub_item.id }}').submit();" class="tiny button light-gray-bg">
+											<fa class="fa fa-close" style="color: red;"></fa>
+										</a>
+									</form>
+								{% endif %}
+							</td>
+						</tr>
+						{% for sub_sub_item in menu_items %}
+							{% if sub_sub_item.menu_item_parent_item.id == sub_item.id %}
+								<tr>
+									<td>
+										{{ sub_sub_item.id }}
+									</td>
+									<td>
+										|-- |-- <a href="/mega-admin/add-menu-item/?id={{ sub_sub_item.id }}">
+											{{ sub_sub_item.menu_item_title }}
+										</a><br>
+										<span class="tiny-text">{{ sub_sub_item.menu_item_alias }}</span>
+									</td>
+									<td class="centered">
+										{{ sub_sub_item.menu_item_language.lang_title_native }}
+									</td>
+									<td class="centered">
+										{{ sub_sub_item.menu_item_menu }}
+									</td>
+									<td class="centered">
+										{{ sub_sub_item.menu_item_type }}
+									</td>
+									<td class="centered">
+										{% if sub_sub_item.menu_item_published == 1 %}
+											<form action="/mega-admin/menu-items/change-item-state/" method="post" id="change-item-state-{{ sub_sub_item.id }}">
+												{% csrf_token %}
+												<input name="menu_item_id" value="{{ sub_sub_item.id }}" style="display: none">
+												<a onclick="document.getElementById('change-item-state-{{ sub_sub_item.id }}').submit();" class="tiny button light-gray-bg">
+													<fa class="fa fa-check green"></fa>
+												</a>
+											</form>
+										{% else %}
+											<form action="/mega-admin/menu-items/change-item-state/" method="post" id="change-item-state-{{ sub_sub_item.id }}">
+												{% csrf_token %}
+												<input name="menu_item_id" value="{{ sub_sub_item.id }}" style="display: none">
+												<a onclick="document.getElementById('change-item-state-{{ sub_sub_item.id }}').submit();" class="tiny button light-gray-bg">
+													<fa class="fa fa-close" style="color: red;"></fa>
+												</a>
+											</form>
+										{% endif %}
+									</td>
+								</tr>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				{% endfor %}
+
+			{% endif %}
+		{% empty %}
+			<tr>
+				<td colspan="5" class="centered">
+					<p>
+						No menus items created
+					</p>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>

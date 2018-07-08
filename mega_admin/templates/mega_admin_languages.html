@@ -1,0 +1,25 @@
+{% extends "mega_admin_main.html" %}
+{% load staticfiles %}
+
+{% block main-wrapper %}
+	{% include "mega_admin_top_menu.html" %}
+	{% include "mega_admin_languages_caption.html" %}
+	{% include "mega_admin_languages_submenu.html" %}
+
+	<div class="row padding-20-0" data-equalizer="mega_admin_wrapper">
+		<div class="medium-3 columns">
+			<div class="row">
+				<div class="medium-12 columns" data-equalizer-watch="mega_admin_wrapper">
+					{% include "languages_sidebar.html" %}
+				</div>
+			</div>
+		</div>
+		<div class="medium-9 columns">
+			<div class="row">
+				<div class="medium-12 columns white-bg" data-equalizer-watch="mega_admin_wrapper">
+					{% include "mega_admin_languages_table.html" %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

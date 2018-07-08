@@ -1,0 +1,477 @@
+{% extends "main.html" %}
+
+{% load staticfiles %}
+
+{% block article %}
+
+	<body>
+
+	<!-- layout-->
+	<div id="layout" class="layout-wide">
+		<!-- Header Section-->
+		<header class="slide">
+			<!-- nav_logo Section-->
+			<div class="nav_logo animated fadeInDown" style="border-bottom: 2px solid #ff4200;">
+				<div class="container">
+					<div class="row">
+						<!-- Logo-->
+						<div class="col-md-3 logo">
+							<a href="index.html" title="Back to Home">
+								<img src="{% static "img/logo.png" %}" alt="Logo" class="logo_img">
+							</a>
+						</div>
+						<!-- End Logo-->
+
+						<!-- Nav-->
+						<nav class="col-md-9">
+							<!-- Menu-->
+							<ul id="menu" class="sf-menu">
+								<li>
+									<a href="/">HOME</a>
+									<ul>
+										<li class="selected"><a href="index.html">Creative</a></li>
+										<li><a href="index-corporate.html">Corporate</a></li>
+										<li><a href="index-business.html">Business</a></li>
+										<li><a href="index-portfolio.html">Portfolio</a></li>
+										<li><a href="index-one-page.html">One Page Theme</a></li>
+										<li><a href="index-landing.html">Landing Page</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="page-about-01.html">ABOUT</a>
+									<ul>
+										<li><a href="page-about-01.html">About 01</a></li>
+										<li><a href="page-about-02.html">About 02</a></li>
+										<li><a href="page-about-me.html">About Me</a></li>
+										<li><a href="page-about-team.html">About Team</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="page-services-01.html">SERVICES</a>
+									<ul>
+										<li><a href="page-services-01.html">Services 01</a></li>
+										<li><a href="page-services-02.html">Services 02</a></li>
+										<li><a href="page-services-03.html">Services 03</a></li>
+										<li><a href="page-services-options.html">Services Options</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="work-2-columns.html">WORKS</a>
+									<ul>
+										<li><a href="work-2-columns.html">Work 2 Columns</a></li>
+										<li><a href="work-3-columns.html">Work 3 Columns</a></li>
+										<li><a href="work-4-columns.html">Work 4 Columns</a></li>
+										<li><a href="single-work.html">Single Work</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">FEATURES</a>
+									<ul>
+										<li><a href="page-sections-content.html">Sections background</a></li>
+										<li><a href="#">Pages</a>
+											<ul>
+												<li><a href="page-full-width.html">Full Width</a></li>
+												<li><a href="page-left-sidebar.html">Left Sidebar</a></li>
+												<li><a href="page-right-sidebar.html">Right Sidebar</a></li>
+												<li><a href="page-404.html">404 Page</a></li>
+												<li><a href="page-faq.html">FAQ</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Sections Titles</a>
+											<ul>
+												<li><a href="page-services-01.html">Option 01</a></li>
+												<li><a href="page-services-02.html">Option 02</a></li>
+												<li><a href="page-services-03.html">Option 03</a></li>
+											</ul>
+										</li>
+										<li><a href="feature-table-pricing.html">Pricing Tables</a></li>
+										<li><a href="feature-grid.html">Grind System</a></li>
+										<li><a href="feature-typograpy.html">Tipograpy</a></li>
+										<li><a href="feature-icons.html">Icons</a></li>
+										<li><a href="feature-elements.html">Elements</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="page-blog-01.html">BLOG</a>
+									<ul>
+										<li><a href="page-blog-01.html">Blog Post 01</a></li>
+										<li><a href="page-blog-02.html">Blog Post 02</a></li>
+										<li><a href="single-post.html">Single Page Post</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="page-contact-02.html">CONTACT</a>
+									<ul>
+										<li><a href="page-contact-01.html">Contact 01</a></li>
+										<li><a href="page-contact-02.html">Contact 02</a></li>
+									</ul>
+								</li>
+							</ul>
+							<!-- End Menu-->
+						</nav>
+						<!-- End Nav-->
+					</div>
+				</div>
+			</div>
+			<!-- End nav_logo Section-->
+
+		</header>
+		<!-- End Header Section-->
+		<section class="content_info">
+			<!-- Parallax Background -->
+			<div class="bg_parallax image_02_parallax" style="background-position: 50% -25px;"></div>
+			<!-- Parallax Background -->
+
+			<!-- Content Parallax-->
+			<section class="opacy_bg_02" style="padding: 220px 0 180px !important;">
+				<div class="row info_title wow fadeInDown">
+					<div class="info_vertical animated">
+						<h1 style="font-size: 60px;">TURKMENWEB <span>PRO</span></h1>
+						<p style="font-size: 30px;">Professional Web development and Technology solutions</p>
+						<img src="{% static "img/custom/technology.png" %}"
+						     style="width: 100%; min-width: 180px; padding: 50px 0;">
+						<p>
+							<button type="button" class="btn btn-primary btn-lg" style="margin: auto 20px">More Abou
+								Us
+							</button>
+							<button type="button" class="btn btn-primary btn-lg" style="margin: auto 20px">Our
+								Services
+							</button>
+						</p>
+					</div>
+				</div>
+			</section>
+			<!-- End Content Parallax-->
+		</section>
+
+		<!-- Info title-->
+		<div class="row info_title wow fadeInUp">
+
+			<i class="fa fa-language left" style="color: #FC4F13;"></i>
+
+			<div class="vertical_line">
+				<div class="circle_bottom"></div>
+			</div>
+			<div class="info_vertical animated">
+				<h1>We proud with <span>PROJECTS</span> we do!</h1>
+				<p class="">Learn our main services aspects. And feel free to contact</p>
+			</div>
+			<div class="vertical_line"></div>
+
+			<i class="fa fa-cogs right" style="color: #FC4F13;"></i>
+		</div>
+		<!-- End Info title-->
+
+		<!-- End content info - Portfolio Carousel Section-->
+		<section class="content_info">
+			<!-- Info Resalt-->
+			<div class="info_resalt borders">
+				<div class="container wow fadeInUp">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- Carousel Gallery-->
+							<ul class="owl-carousel carousel-portfolio" id="carousel-portfolio">
+								<li>
+									<div class="hover">
+										<img src="{% static "img/custom/service/thumb/development.jpg" %}" alt=""/>
+										<a href="{% static "img/custom/service/thumb/development.jpg" %}"
+										   class="ligbox-image" title="Image">
+											<div class="overlay"></div>
+										</a>
+									</div>
+									<div class="info text-center">
+										<h5>
+											Web Development
+										</h5>
+									</div>
+								</li>
+
+								<li>
+									<div class="hover">
+										<img src="{% static "img/custom/service/thumb/network.jpg" %}" alt=""/>
+										<a href="{% static "img/custom/service/thumb/network.jpg" %}"
+										   class="ligbox-image" title="Image">
+											<div class="overlay"></div>
+										</a>
+									</div>
+									<div class="info text-center">
+										<h5>
+											Server and Network
+										</h5>
+									</div>
+								</li>
+
+								<li>
+									<div class="hover">
+										<img src="{% static "img/custom/service/thumb/seo.jpg" %}" alt=""/>
+										<a href="{% static "img/custom/service/thumb/seo.jpg" %}" class="ligbox-image" title="Image">
+											<div class="overlay"></div>
+										</a>
+									</div>
+									<div class="info text-center">
+										<h5>
+											SEO services
+										</h5>
+									</div>
+								</li>
+
+								<li>
+									<div class="hover">
+										<img src="{% static "img/custom/service/thumb/software.jpg" %}" alt=""/>
+										<a href="{% static "img/custom/service/thumb/software.jpg" %}" class="ligbox-image" title="Image">
+											<div class="overlay"></div>
+										</a>
+									</div>
+									<div class="info text-center">
+										<h5>
+											Software and PC
+										</h5>
+									</div>
+								</li>
+
+{#								<li>#}
+{#									<div class="hover">#}
+{#										<img src="{% static "img/gallery/5.jpg" %}" alt=""/>#}
+{#										<a href="{% static "img/gallery/5.jpg" %}" class="ligbox-image" title="Image">#}
+{#											<div class="overlay"></div>#}
+{#										</a>#}
+{#									</div>#}
+{#									<div class="info">#}
+{#										Political - Landing Page#}
+{#										<i class="fa fa-tablet"></i>#}
+{#										<i class="fa fa-desktop"></i>#}
+{#									</div>#}
+{#								</li>#}
+{##}
+{#								<li>#}
+{#									<div class="hover">#}
+{#										<img src="{% static "img/gallery/6.jpg" %}" alt=""/>#}
+{#										<a href="{% static "img/gallery/6.jpg" %}" class="ligbox-image" title="Image">#}
+{#											<div class="overlay"></div>#}
+{#										</a>#}
+{#									</div>#}
+{#									<div class="info">#}
+{#										Classic Restaurant - Css3/Html5#}
+{#										<i class="fa fa-tablet"></i>#}
+{#										<i class="fa fa-desktop"></i>#}
+{#									</div>#}
+{#								</li>#}
+							</ul>
+							<!--End Carousel Gallery-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Info Resalt-->
+		</section>
+		<!-- End content info - Portfolio Carousel Section-->
+
+		<!-- Info title-->
+		<div class="row info_title wow fadeInUp">
+			<div class="vertical_line">
+				<div class="circle_bottom"></div>
+			</div>
+			<div class="info_vertical animated">
+				<h1>Our <span>Great</span> Process</h1>
+				<p>“Sollemnes wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+					ut aliquip consequat.”</p>
+			</div>
+			<div class="vertical_line"></div>
+
+			<i class="fa fa-tablet right" style="color: #FC4F13;"></i>
+		</div>
+		<!-- End Info title-->
+
+		<!-- End content info - Services Section -->
+		<section class="content_info">
+			<!-- Services-->
+			<section class="info_resalt borders">
+				<div class="container wow fadeInUp">
+					<div class="row text-center">
+						<div class="service-process">
+							<!-- Step 1 -->
+							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+								<div class="thumbnail">
+									<div class="caption-head">
+										<em class="caption-icon fa fa-graduation-cap icon-big"></em>
+										<h2 class="caption-title">Imagine</h2>
+									</div>
+								</div>
+							</div>
+							<!-- End Step 1 -->
+
+							<!-- Step 2 -->
+							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+								<div class="thumbnail">
+									<div class="caption-head">
+										<em class="caption-icon fa fa-edit icon-big"></em>
+										<h2 class="caption-title">Structuring</h2>
+									</div>
+								</div>
+							</div>
+							<!-- End Step 2 -->
+
+							<!-- Step 3 -->
+							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+								<div class="thumbnail">
+									<div class="caption-head">
+										<em class="caption-icon fa fa-cog icon-big"></em>
+										<h2 class="caption-title">Development</h2>
+									</div>
+								</div>
+							</div>
+							<!-- End Step 3 -->
+
+							<!-- Step 4 -->
+							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+								<div class="thumbnail">
+									<div class="caption-head">
+										<em class="caption-icon fa fa-plane icon-big"></em>
+										<h2 class="caption-title">Deployment</h2>
+									</div>
+								</div>
+							</div>
+							<!-- End Step 4 -->
+						</div>
+
+						<div class="col-md-12 single_services">
+							<p class="lead">
+								We apply professional solutions for each task. Also we provide post-launch support as
+								included or extra service
+								<a href="#">Learn More</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End Services-->
+		</section>
+		<!-- End content info - Services Section -->
+
+		<!-- Info title-->
+		<div class="row info_title wow fadeInUp">
+			<div class="vertical_line">
+				<div class="circle_bottom"></div>
+			</div>
+			<div class="info_vertical animated">
+				<h1>Testimonials our <span>clients</span></h1>
+				<p>The best reqard for us is the good review from our dearest clients</p>
+			</div>
+			<div class="vertical_line"></div>
+
+			<i class="fa fa-trophy left" style="color: #FC4F13;"></i>
+		</div>
+		<!-- End Info title-->
+
+		<!-- End content info - Testimonials Section-->
+		<section class="content_info">
+			<!-- testimonials-->
+			<section class="info_resalt border_top">
+				<!-- testimonials Carousel-->
+				<ul class="owl-carousel carousel-testimonials wow fadeInUp" id="carousel-testimonials">
+					<!-- Item testimonial-->
+					<li>
+						<div class="head-testimonials">
+							<div class="image-testimonials">
+								<img src="{% static "img/custom/works/logo/oguzkent-logo.jpg" %}" alt="">
+							</div>
+						</div>
+						<div class="name">
+							<h3><a href="http://www.oguzkenthotel.com" target="_blank">www.oguzkenthotel.com</a></h3>
+						</div>
+						<div class="job">
+							<h3>Oguzkent Hotel</h3>
+						</div>
+						<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+							Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+					</li>
+					<!-- End Item testimonial-->
+
+					<!-- Item testimonial-->
+					<li>
+						<div class="head-testimonials">
+							<div class="image-testimonials">
+								<img src="{% static "img/custom/works/logo/tfeb-logo.jpg" %}" alt="">
+							</div>
+						</div>
+						<div class="name">
+							<h3><a href="http://www.tfeb.gov.tm" target="_blank">www.tfeb.gov.tm</a></h3>
+						</div>
+						<div class="job">
+							<h3>Turkmenistan Foreign Economic Bank</h3>
+						</div>
+						<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+							Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+					</li>
+					<!-- End Item testimonial-->
+
+					<!-- Item testimonial-->
+					<li>
+						<div class="head-testimonials">
+							<div class="image-testimonials">
+								<img src="{% static "img/custom/works/logo/atabray-logo.jpg" %}" alt="">
+							</div>
+						</div>
+						<div class="name">
+							<h3><a href="http://www.at-abray.net" target="_blank">www.at-abray.net</a></h3>
+						</div>
+						<div class="job">
+							<h3>At-Abray Logistic</h3>
+						</div>
+						<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+							Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+					</li>
+					<!-- End Item testimonial-->
+
+					<!-- Item testimonial-->
+					<li>
+						<div class="head-testimonials">
+							<div class="image-testimonials">
+								<img src="{% static "img/custom/works/logo/senagat-logo.jpg" %}" alt="">
+							</div>
+						</div>
+						<div class="name">
+							<h3><a href="http://www.senagatbank.gov.tm" target="_blank">www.senagatbank.gov.tm</a></h3>
+						</div>
+						<div class="job">
+							<h3>Senagat Bank</h3>
+						</div>
+						<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+							Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+					</li>
+					<!-- End Item testimonial-->
+
+					<!-- Item testimonial-->
+					<li>
+						<div class="head-testimonials">
+							<div class="image-testimonials">
+								<img src="{% static "img/custom/works/logo/sulgun-logo.jpg" %}" alt="">
+							</div>
+						</div>
+						<div class="name">
+							<h3><a href="http://www.sulgun.com" target="_blank">www.sulgun.com</a></h3>
+						</div>
+						<div class="job">
+							<h3>Sulgun brand e-store</h3>
+						</div>
+						<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+							Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+					</li>
+					<!-- End Item testimonial-->
+				</ul>
+				<!-- End testimonials Carousel-->
+				<p class="text-center">
+					<button type="button" class="btn btn-primary btn-lg" style="margin-top: 45px;">
+						See our Works
+					</button>
+				</p>
+			</section>
+			<!-- End testimonials-->
+		</section>
+		<!-- End content info - Testimonials Section-->
+
+		{% include "footer.html" %}
+	</div>
+	<!-- End layout-->
+	</body>
+{% endblock %}

@@ -1,0 +1,92 @@
+<div class="module-article-slider">
+	<ul class="accordion" data-accordion>
+		{% with count=module.module_article_slider_module_key.module_article_slider_count|stringformat:"s" %}
+			{% with  count_slice=":"|add:count %}
+				<div class="orbit" role="region" aria-label="{{ module.id }}" data-orbit>
+					<div class="orbit-wrapper">
+						<div class="orbit-controls">
+							<button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;
+							</button>
+							<button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;
+							</button>
+						</div>
+						<ul class="orbit-container">
+							{% for article in module.module_article_slider_module_key.module_article_slider_category.article_category_key.all|slice:count_slice %}
+								{% if article.article_published == 1 %}
+									{% if forloop.first %}
+										<li class="is-active orbit-slide">
+											{% if module.module_article_slider_module_key.module_article_slider_image == 1 %}
+												<figure class="orbit-figure">
+													<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}" class="small">
+														<img src="/static/{{ article.article_image }}">
+													</a>
+												</figure>
+											{% endif %}
+											<h5>
+												{{ article.article_title }}
+											</h5>
+											{% if module.module_article_slider_module_key.module_article_slider_parent == 1 %}
+												<span><a href="/content/blog/{{ article.article_category.article_category_alias }}/" class="small">
+													{{ article.article_category }}
+												</a></span>
+											{% endif %}
+											<p>
+												{% autoescape off %}
+													{{ article.article_intro }}
+												{% endautoescape %}
+											</p>
+											<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}/" class="button small">
+												{{ module.module_article_slider_module_key.module_article_slider_button }}
+											</a>
+										</li>
+									{% else %}
+										<li class="orbit-slide">
+											{% if module.module_article_slider_module_key.module_article_slider_image == 1 %}
+												<figure class="orbit-figure">
+													<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}" class="small">
+														<img src="/static/{{ article.article_image }}">
+													</a>
+												</figure>
+											{% endif %}
+											<h5>
+												{{ article.article_title }}
+											</h5>
+											{% if module.module_article_slider_module_key.module_article_slider_parent == 1 %}
+												<span><a href="/content/blog/{{ article.article_category.article_category_alias }}/" class="small">
+													{{ article.article_category }}
+												</a></span>
+											{% endif %}
+											<p>
+												{% autoescape off %}
+													{{ article.article_intro }}
+												{% endautoescape %}
+											</p>
+											<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}/" class="button small">
+												{{ module.module_article_slider_module_key.module_article_slider_button }}
+											</a>
+										</li>
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+						</ul>
+						<nav class="orbit-bullets">
+							{% for article in module.module_article_slider_module_key.module_article_slider_category.article_category_key.all %}
+								{% if article.article_published == 1 %}
+									{% if forloop.first %}
+										<button class="is-active" data-slide="0">
+											<span class="show-for-sr">{{ article.article_title }}</span>
+										</button>
+									{% else %}
+										<button data-slide="{{ forloop.counter0 }}">
+											<span class="show-for-sr">{{ article.article_title }}</span>
+										</button>
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+						</nav>
+					</div>
+				</div>
+			{% endwith %}
+		{% endwith %}
+	</ul>
+</div>

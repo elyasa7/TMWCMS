@@ -1,0 +1,22 @@
+{% load staticfiles %}
+
+<div class="dashboard-sidebar">
+	<p>
+		Languages
+	</p>
+
+	<a href="/mega-admin/languages/" {% if current_menu == "languages" %} class="active" {% endif %}>
+		{% if current_menu == "languages" %}
+			<i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>
+		{% endif %}
+		Languages
+	</a>
+
+	<a href="/mega-admin/languages-config/" {% if current_menu == "languages-config" %} class="active" {% endif %}>
+		{% if current_menu == "languages-config" %}
+			<i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>
+		{% endif %}
+		Languages Config
+	</a>
+
+</div>

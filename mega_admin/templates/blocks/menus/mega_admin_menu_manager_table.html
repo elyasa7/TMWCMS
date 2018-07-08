@@ -1,0 +1,67 @@
+<div class="padding-20-0">
+	<table class="hover">
+		<thead>
+		<tr>
+			<td>
+				ID
+			</td>
+			<td>
+				Title
+			</td>
+			<td class="centered">
+				Published
+			</td>
+			<td class="centered">
+				Unpublished
+			</td>
+			<td class="centered">
+				Trashed
+			</td>
+			<td class="centered">
+				Language
+			</td>
+		</tr>
+		</thead>
+		<tbody>
+		{% for menu in menus %}
+			<tr>
+				<td>
+					{{ menu.id }}
+				</td>
+				<td>
+					<a href="/mega-admin/menus/{{ menu.id }}/">
+						{{ menu.menu_menu_title }}
+					</a><br>
+					<span class="tiny-text">{{ menu.menu_menu_alias }}</span>
+				</td>
+				<td class="centered">
+					<span class="digit-label success-bg">
+						14
+					</span>
+				</td>
+				<td class="centered">
+					<span class="digit-label alert-bg">
+						8
+					</span>
+				</td>
+				<td class="centered">
+					<span class="digit-label dark-bg">
+						3
+					</span>
+				</td>
+				<td class="centered">
+					RU
+				</td>
+			</tr>
+		{% empty %}
+			<tr>
+				<td colspan="5" class="centered">
+					<p>
+						No menus created
+					</p>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>

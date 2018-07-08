@@ -1,0 +1,15 @@
+{% load staticfiles %}
+
+{% block simbar-ru %}
+    <div class="centered sidebar-b">
+    {% for simbar in simbars %}
+    <h6>
+        {% if simbar.id == article.id %}
+        <a href="/tm/restaurants/{{ simbar.id }}/" ><strong>{{ simbar.article_title }}</strong></a>
+        {% else %}
+        <a href="/tm/restaurants/{{ simbar.id }}/" >{{ simbar.article_title }}</a>
+        {% endif %}
+    </h6>
+    {% endfor %}
+    </div>
+{% endblock %}

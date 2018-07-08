@@ -1,0 +1,50 @@
+{% load staticfiles %}
+{% include "mega_admin_head.html" %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+
+{% block head %}
+{% endblock %}
+
+<body>
+{% block main-wrapper %}{% endblock %}
+{% block mega-footer %}
+	{% include "mega_admin_footer.html" %}
+{% endblock %}
+
+<!-- Initialize the editor. -->
+<script>
+	$('#summernote').summernote({
+		placeholder: 'enter your text here',
+		tabsize: 4,
+		height: 250
+	});
+</script>
+
+
+<script>
+	$('#summernote2').summernote({
+		placeholder: 'enter your text here',
+		tabsize: 4,
+		height: 250
+	});
+</script>
+
+<script>
+	$('#summernote3').summernote({
+		placeholder: 'enter your text here',
+		tabsize: 4,
+		height: 250
+	});
+</script>
+<script src="{% static "mega-admin/js/vendor/jquery.min.js" %}"></script>
+<script src="{% static "mega-admin/js/vendor/what-input.min.js" %}"></script>
+<script src="{% static "mega-admin/js/foundation.min.js" %}"></script>
+
+<script>
+	$(document).foundation();
+</script>
+</body>
+</html>

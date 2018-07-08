@@ -1,0 +1,66 @@
+<div class="reveal" id="change-language-{{ language.id|safe }}-modal" data-reveal>
+	<h5>Change Language <b>{{ language.lang_title }} ({{ language.lang_sef }})</b></h5>
+	<hr>
+	<form action="/mega-admin/add-language/" method="post">
+		{% csrf_token %}
+		<label>
+			<div class="medium-3 columns">
+				<p>Language title</p>
+			</div>
+			<div class="medium-9 columns">
+				<input type="text" placeholder="Language title" name="lang_title" value="{{ language.lang_title }}"
+				       required>
+			</div>
+		</label>
+		<label>
+			<div class="medium-3 columns">
+				<p>Title Native</p>
+			</div>
+			<div class="medium-9 columns">
+				<input type="text" placeholder="Language title Native" name="lang_title_native"
+				       value="{{ language.lang_title_native }}" required>
+			</div>
+		</label>
+		<label>
+			<div class="medium-3 columns">
+				<p>SEF prefix</p>
+			</div>
+			<div class="medium-9 columns">
+				<input type="text" placeholder="SEF prefix" name="lang_sef" value="{{ language.lang_sef }}" required>
+			</div>
+		</label>
+		<label>
+			<div class="medium-3 columns">
+				<p>Description</p>
+			</div>
+			<div class="medium-9 columns">
+				<input type="text" placeholder="Language description" name="lang_description"
+				       value="{{ language.lang_description }}" required>
+			</div>
+		</label>
+		<div class="clearfix"></div>
+
+		<div class="medium-10 columns lefted">
+			<input type="submit" class="button success" value="Save">
+			<button type="button" class="button alert small" data-close aria-label="Close modal">
+				Cancel
+			</button>
+		</div>
+	</form>
+
+	<div class="medium-2 columns righted">
+		{% csrf_token %}
+		<form id="delete-language-{{ language.id|safe }}" method="post"
+		      action="/mega-admin/change-language-delete/">
+		{% csrf_token %}
+		<input name="lang_id" value="{{ language.id|safe }}" style="display: none;">
+		<a type="button" class="button tiny"
+		   onclick="document.getElementById('delete-language-{{ language.id }}').submit();">
+			Delete
+		</a>
+		</form>
+	</div>
+<button class="close-button" data-close aria-label="Close modal" type="button">
+	<span aria-hidden="true">&times;</span>
+</button>
+</div>

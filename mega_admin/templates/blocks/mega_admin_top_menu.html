@@ -1,0 +1,119 @@
+{% load staticfiles %}
+
+<div class="dark-bg">
+	<div class="row">
+		<div class="medium-2 columns">
+			<h6 class="logo-text">
+				TMW CMS v1.0
+			</h6>
+		</div>
+		<div class="medium-10 columns">
+			<ul class="vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown">
+				<li>
+					<a href="/mega-admin/">Dashboard</a>
+				</li>
+				<li>
+					<a href="#">Menu</a>
+					<ul class="vertical menu">
+{#						<li>#}
+{#							<a href="#add-menu-category-modal" data-open="add-menu-category-modal">#}
+{#								Add menu category#}
+{#							</a>#}
+{#						</li>#}
+{#						<li>#}
+{#							<a href="#add-menu-type-modal" data-open="add-menu-type-modal">#}
+{#								Add menu type#}
+{#							</a>#}
+{#						</li>#}
+						<li>
+							<a href="/mega-admin/menu-items/" data-open="add-menu-type-modal">
+								Add menu type
+							</a>
+						</li>
+						<li>
+							<a href="/mega-admin/menus">
+								Manage menus
+							</a>
+							<ul class="vertical menu">
+								<li>
+									<a href="#add-menu-modal" data-open="add-menu-modal">
+										Add new menu
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<hr style="padding: 0px; margin: 0px;">
+						</li>
+						{% for menu in menus %}
+							<li>
+								<a href="/mega-admin/menu-items/?menu={{ menu.id }}">
+									{{ menu.menu_menu_title }}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</li>
+				<li>
+					<a href="#">Content</a>
+					<ul class="vertical menu">
+						<li>
+							<a href="/mega-admin/content/article-manager/">Articles</a>
+						</li>
+						<li>
+							<a href="/mega-admin/content/category-manager/">Categories</a>
+							<ul class="vertical menu">
+								<li>
+									<a href="/mega-admin/add-category/">
+										Add new Category
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Media</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/mega-admin/module/module-manager/">Modules</a>
+				</li>
+				<li>
+					<a href="#">Languages</a>
+					<ul class="vertical menu">
+						<li>
+							<a href="/mega-admin/languages/">
+								Languages
+							</a>
+						</li>
+						<li>
+							<a href="/mega-admin/languages-config/">
+								Lamguages Config
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/mega-admin/templates/">Templates</a>
+				</li>
+				<li>
+					<a href="#">Configuration</a>
+					<ul class="vertical menu">
+						<li><a href="#">Item 2A</a></li>
+						<li><a href="#">Item 2B</a></li>
+					</ul>
+				</li>
+			</ul>
+			<script>
+				$(window).on('changed.zf.mediaquery', function () {
+					$('.is-dropdown-submenu.invisible').removeClass('invisible');
+				});
+			</script>
+		</div>
+	</div>
+</div>
+
+
+{% include "add-menu-category-modal.html" %}
+{% include "add-menu-type-modal.html" %}
+{% include "add-menu-modal.html" %}

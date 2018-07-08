@@ -1,0 +1,97 @@
+{% extends "main-ru.html" %}
+
+{% load staticfiles %}
+
+{% block article %}
+
+<body>
+{% include "loading.html" %}
+{% include "filler.html" %}
+<script type="text/javascript">
+    function checkform()
+    {
+        if(document.register.name.value == "")
+            {alert("Пожалуйста введите своё Имя"); return false;}
+        if(document.register.email.value == "")
+            {alert("Пожалуйста введите свой E-mail"); return false;}
+        if(document.register.subject.value == "")
+            {alert("Пожалуйста введите тему сообщения"); return false;}
+        if(document.register.message.value == "")
+            {alert("Пожалуйста введите своё сообщение"); return false;}
+        else
+            {document.register.submit();}
+    }
+</script>
+
+    <div class="main-top">
+        <div class="row">
+            <div class="large-3 columns" style="padding: 0px;">
+                <div class="show-for-large">{% include "reservation-ru.html" %}</div>
+
+                <hr class="transparrent-hr"> 
+                
+
+                <div class="small-12 columns">
+                    <div class="sidebar-b">
+                        <p class="centered" style="margin-bottom: 5px;">
+                            Отель "Огузкент"
+                        </p>
+                        <p class="centered small-font" style="margin-bottom: 5px;">
+                            Туркменистан, 744000, Ашхабад, <br>пр. Битарап Туркменистан, 231
+                        </p>
+                        <hr style="margin: 5px;">
+                        <p class="centered small-font" style="margin-bottom: 5px;">Тел: +993 (12) 449500</p>
+                        <p class="centered small-font" style="margin-bottom: 5px;">Факс: +993 (12) 449501/59</p>
+                        <hr style="margin: 5px;">
+                        <p class="centered small-font" style="margin-bottom: 5px;">E-mail: info@oguzkenthotel.com</p>
+                        <hr style="margin: 5px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="large-6 columns">
+                <div class="large-12 columns">
+                    <h2 class="centered">{{ title }}</h2><hr>
+
+                    <form action="/ru/sendmail/" method="POST" name="register">
+                         {% csrf_token %}
+                        <label for="name" value="">
+                            Ваше имя: <input type="text" id="name" name="name" style="max-width: 300px;">
+                        </label>
+                        <label for="email" value="">
+                            Ваш E-mail адрес: <input type="text" id="email" name="email" style="max-width: 300px;">
+                        </label>
+                        <label for="subject" value="">
+                            Тема: <input type="text" id="subject" name="subject"  style="max-width: 300px;">
+                        </label>
+                        <label for="message" value="">
+                            Сообщение: <textarea type="text" id="message" name="message" rows="4" style="max-width: 600px;"></textarea>
+                        </label>
+
+                        <input class="small button" onclick="return checkform()" type="submit" value="Отправить"></input>
+                    </form>
+                    <hr>
+                </div>
+                <hr class="transparrent-hr"/>
+            </div>
+            
+            <div class="show-for-large">
+                <div class="small-3 columns">
+                    <div style="margin-left: 30px;">
+                        <div id="TA_cdswritereviewlg351" class="TA_cdswritereviewlg">
+                            <ul id="nqb57J7tI" class="TA_links evJepr9C2OBC">
+                                <li id="oeQYttWfp6" class="FAhad9Y">
+                                    <a target="_blank" href="https://www.tripadvisor.ru/"><img src="https://www.tripadvisor.ru/img/cdsi/img2/branding/medium-logo-12097-2.png" alt="TripAdvisor"/></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <script src="https://www.jscache.com/wejs?wtype=cdswritereviewlg&amp;uniq=351&amp;locationId=2098166&amp;lang=ru&amp;lang=ru&amp;display_version=2"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include "footer-ru.html" %}
+</body>
+{% endblock %}

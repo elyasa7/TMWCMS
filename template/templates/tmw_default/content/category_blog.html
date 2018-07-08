@@ -1,0 +1,36 @@
+{% extends "tmw_default/tmw_default_blank.html" %}
+
+{% block page_title %}
+	<h3 class="uppercase">
+		{{ category.article_category_title }}
+	</h3>
+{% endblock %}
+{% block article %}
+<article>
+	{% for article in articles %}
+		<div class="row">
+			{% if article.article_image != None %}
+				<div class="large-3 medium-6 small-12 columns">
+					<img src="/static/{{ article.article_image }}">
+				</div>
+			{% endif %}
+			<div class="column">
+				<h5>
+					<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}">
+						{{ article.article_title }}
+					</a>
+				</h5>
+				{% autoescape off %}
+					{{ article.article_intro }}
+				{% endautoescape %}
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-12 columns">
+				<hr>
+			</div>
+		</div>
+	{% endfor %}
+</article>
+{% endblock %}

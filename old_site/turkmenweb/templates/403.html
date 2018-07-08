@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+
+{% load staticfiles %}
+
+{% block article %}
+
+<body>
+<div class="wrapper">
+	<div class="content centered" style="margin-top: 50px;">
+		<h1 class="secondary-color" style="font-size: 200px; line-height: 100%">403</h1>
+		<h1 class="secondary-color">Доступ Запрещён</h1>
+		<h5 class="white">Пожалуйста перейдите на нижеуказанные страницы</h5>
+
+		<div class="row">
+			<hr>
+		<p class="footer-links">
+
+				<a href="/" style="padding: 10px;" class="white">Главная </a>
+				
+				<a href="/development/" style="padding: 10px;" class="white">WEB Разработка </a>
+				
+				<a href="/ssl/" style="padding: 10px;" class="white">SSL Сертификаты </a>
+				
+				<a href="/avast/" style="padding: 10px;" class="white">AVAST Антивирус </a>
+
+				<!--<a href="/faq/" style="padding: 10px;" class="white">Вопросы и ответы </a>-->
+
+				<a href="/support/" style="padding: 10px;" class="white">Тех. поддержка </a>
+
+			</p>
+		</div>
+	</div>
+	{% include "footer.html" %}
+
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+{% block head %}
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="interkassa-verification" content="782d5561810627418fd73b9e7b65a650" />
+	<meta name="Description" content="{{ article.article_intro }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="google-site-verification" content="GsabzoDGd3WHrSbVblVgCSpwuaTGSh0aO1hv_XesVnI" />
+	<meta name="google-site-verification" content="GsabzoDGd3WHrSbVblVgCSpwuaTGSh0aO1hv_XesVnI" />
+	<title>
+	{% if article %}
+	    {{ article.article_title }}
+	{% else %}
+	    TURKMENWEB.PRO Грамотный подход к серьезным вопросам
+	{% endif %}</title>
+	<link rel="stylesheet" href="{% static "css/foundation.css" %}" />
+	<link rel="stylesheet" href="{% static "css/app.css" %}" />
+	<link rel="stylesheet" href="{% static "css/font-awesome.css" %}" />
+	<script src="{% static "js/analytics.js" %}" /></script>
+</head>
+{% endblock %}

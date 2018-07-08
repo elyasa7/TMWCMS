@@ -1,0 +1,17 @@
+{% block service %}
+<div class="sidebar-b">
+    <h5 class="centered">Additional services</h5>
+    <table  style="font-size: 90%;">
+    {% for service in services %}
+        <tr>
+
+        <td style="width: 75%">
+            <label><input type="checkbox" name="servlist[]" value="{{ service.suite_service_verbose }}">
+        {{ service.suite_service_title }}:</label></td>
+        <td style="width: 25%">{{ service.suite_service_price }} $</td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% load staticfiles %}
+
+<div class="padding-20-0">
+	<table class="hover">
+		<thead>
+		<tr>
+			<td>
+				ID
+			</td>
+			<td>
+				Category name
+			</td>
+			<td class="centered">
+				Alias
+			</td>
+			<td class="centered">
+				Languages
+			</td>
+			<td class="centered">
+				Articles
+			</td>
+		</tr>
+		</thead>
+		<tbody>
+		{% for category in categories %}
+			<tr>
+				<td>
+					{{ category.id }}
+				</td>
+				<td>
+					<a href="/mega-admin/content/add-category/?id={{ category.id }}" class="primary-color">
+						{{ category.article_category_title }}
+					</a>
+				</td>
+				<td class="centered">
+					{{ category.article_category_alias }}
+				</td>
+				<td class="centered">
+					{% if category.article_category_language.lang_sef == "xx" %}
+						All
+					{% else %}
+						{{ category.article_category_language.lang_sef }}
+					{% endif %}
+				</td>
+				<td class="centered">
+					{{ category.article_category_key.count }}
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>

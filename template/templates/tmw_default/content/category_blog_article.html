@@ -1,0 +1,28 @@
+{% extends "tmw_default/tmw_default_blank.html" %}
+{% block article %}
+<article>
+	<div class="row">
+		<div class="columns">
+			<h3 class="uppercase">
+				{{ article.article_title }}
+			</h3>
+			<p>
+				<span class="strong">
+					Category:
+				</span>
+				<a href="/content/blog/{{ article.article_category.article_category_alias }}">
+					{{ article.article_category.article_category_title }}
+				</a>
+			</p>
+			<hr>
+			{% autoescape off %}
+				{{ article.article_intro }}
+			{% endautoescape %}
+			{% autoescape off %}
+				{{ article.article_content }}
+			{% endautoescape %}
+			<hr>
+		</div>
+	</div>
+</article>
+{% endblock %}

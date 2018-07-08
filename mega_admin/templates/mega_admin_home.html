@@ -1,0 +1,92 @@
+{% extends "mega_admin_main.html" %}
+{% load staticfiles %}
+
+{% block main-wrapper %}
+	{% include "mega_admin_top_menu.html" %}
+	{% include "mega_admin_dashboard_caption.html" %}
+
+	<div class="row padding-20-0" data-equalizer="mega_admin_wrapper">
+		<div class="medium-3 columns">
+			<div class="row">
+				<div class="medium-12 columns" data-equalizer-watch="mega_admin_wrapper">
+					{% include "dashboard_sidebar.html" %}
+				</div>
+			</div>
+		</div>
+		<div class="medium-9 columns">
+			<div class="row">
+				<div class="medium-12 columns white-bg" data-equalizer-watch="mega_admin_wrapper">
+					<div class="row">
+						<div class="medium-12 columns">
+							<div class="">
+								<h3>
+									Wellcome to TMW CMS v1.0
+								</h3>
+								<hr>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="medium-3 columns" style="background: #f1f1f1; padding: 20px;">
+							<h6>Categories</h6>
+							<hr>
+							<ul>
+								{% for category in categories %}
+									<li style="padding-left: 0; margin-left: -20px; list-style: none">
+										<a href="/mega-admin/content/add-category/?id={{ category.id }}" style="color: #7b7b7b">
+											{{ category.article_category_title }}
+										</a>
+									</li>
+								{% endfor %}
+							</ul>
+							<a href="/mega-admin/content/category-manager/">
+								All categories
+							</a>
+						</div>
+						<div class="medium-9 columns table-bordered">
+							<h5>Latest Articles</h5>
+							<hr>
+							<table>
+								{% for article in articles %}
+									<tr>
+										<td>
+										<a href="/mega-admin/content/add-article/?id={{ article.id }}" class="primary">
+											{{ article.article_title }}
+										</a>
+										</td>
+									</tr>
+								{% endfor %}
+							</table>
+							<a href="/mega-admin/content/article-manager/">
+								All Articles
+							</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="medium-12 columns">
+							<h6 class="padding-20-0">
+								Installed Languages
+							</h6>
+						</div>
+					</div>
+					<div class="row">
+						{% for language in languages %}
+							<div class="medium-2 columns left">
+								<p>
+									{% if language.lang_sef == "xx" %}
+										<fa class="fa fa-globe"></fa> Default (ALL)
+									{% else %}
+										<img src="{% static 'img/system/languages/'|add:language.lang_sef|add:'.png' %}"
+										     style="width: 20px;" class="left">
+										{{ language.lang_title }}
+									{% endif %}
+								</p>
+							</div>
+						{% endfor %}
+					</div>
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

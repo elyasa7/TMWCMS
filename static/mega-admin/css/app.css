@@ -1,0 +1,406 @@
+body {
+	background: url('../img/mega-admin-bg.jpg');
+	font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+	font-size: 14px;
+}
+
+.column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
+	float: left;
+}
+
+.mega-admin-footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+input::-moz-placeholder {
+	color: #888888;
+}
+
+input:checked ~ .switch-paddle {
+	background: #00a800;
+}
+
+label {
+	text-rendering: optimizeLegibility !important;
+	display: block;
+	margin: 0;
+	font-size: 14px;
+	font-weight: inherit;
+	line-height: 1.8;
+	color: #777;
+}
+
+.select-label {
+	text-rendering: optimizeLegibility !important;
+	display: flex;
+	margin: 0;
+	font-size: 14px;
+	font-weight: inherit;
+	line-height: 2.5;
+	color: #777;
+}
+
+.select-label input[type="radio"]::after{
+	padding-right: 20px;
+}
+
+input {
+	font-size: 14px !important;
+	font-weight: normal !important;
+	height: 35px !important;
+}
+
+select {
+	font-size: 13px !important;
+	font-weight: normal !important;
+	height: 35px !important;
+}
+
+.note-btn {
+	padding: 5px 8px;
+	font-size: 12px;
+}
+
+/* SUMMERNOTE REDESIGN --start-- */
+
+.note-editor.note-frame .note-editing-area .note-codable {
+	background: #444;
+	color: #cecece;
+}
+
+/* SUMMERNOTE REDESIGN --end-- */
+
+/* GENERAL STYLES --start-- */
+
+.relative {
+	position: relative;
+}
+
+.hidden {
+	display: none;
+}
+
+.transparent-hr {
+	border-color: rgba(0, 0, 0, 0);
+}
+
+.dark-bg {
+	background: #1c1c1c;
+}
+
+.primary-bg {
+	background: #FC4F13;
+}
+
+.secondary-bg {
+	background: #EFB427;
+}
+
+.success-bg {
+	background: #00a800;
+}
+
+.gray-bg {
+	background: #6b6b6b;
+}
+
+.light-gray-bg {
+	background: #dedede;
+}
+
+.alert-bg {
+	background: #9a0000;
+}
+
+.white-bg {
+	background: #FFF;
+}
+
+.white-alpha-bg {
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+.black-alpha-bg {
+	background-image: url(../img/system/axiom-pattern.png);
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.dark-color {
+	color: #0a0a0a;
+}
+
+.primary-color {
+	color: #FC4F13;
+}
+
+.white {
+	color: #FFF;
+}
+
+.green {
+	color: green;
+}
+
+.secondary-color {
+	color: #EFB427;
+}
+
+.digit-label {
+	padding: 2px 7px 2px 5px;
+	border-radius: 5px;
+	color: #FFF;
+}
+
+.small-black-text-shadow {
+	text-shadow: 1px 1px 1px #565656;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.small-text {
+	font-size: 14px;
+}
+
+.tiny-text {
+	font-size: 10px;
+}
+
+.line-through {
+	text-decoration: line-through;;
+}
+
+.centered {
+	text-align: center;
+}
+
+.centered-div {
+	margin: 0 auto;
+}
+
+.lefted {
+	text-align: left;
+}
+
+.righted {
+	text-align: right;
+}
+
+.padding-20 {
+	padding: 20px;
+}
+
+.padding-20-0 {
+	padding: 20px 0px;
+}
+
+.padding-0-20 {
+	padding: 0px 20px;
+}
+
+/*table > thead {*/
+/*background: #444;*/
+/*color: #f0f0f0;*/
+/*}*/
+
+/*.hover > thead:hover {*/
+/*background: #444 !important;*/
+/*color: #f0f0f0;*/
+/*}*/
+
+table > thead > tr > td {
+	font-size: 12px;
+}
+
+table > tbody > tr > td {
+	font-size: 12px;
+}
+
+table > tbody > tr > td > a {
+	color: #FC4F13;
+}
+
+table > tbody > tr > td > a:hover {
+	color: #d6430f;
+}
+
+/* GENERAL STYLES --end-- */
+
+/* ADMIN DASHBOARD SIDEBAR STYLES --start-- */
+
+.dashboard-sidebar {
+	margin-bottom: 0.5rem;
+	padding: 10px;
+	background: #FFFFFF;
+	border: 1px solid #cecece;
+	border-radius: 10px;
+}
+
+.dashboard-sidebar p {
+	padding: 5px 10px;
+	margin-bottom: 0.5rem;
+	text-transform: uppercase;
+}
+
+.dashboard-sidebar a {
+	padding: 5px 10px;
+	width: 100%;
+	display: block;
+	line-height: 26px;
+	font-size: 12px;
+	transition: all 150ms ease-out;
+}
+
+.dashboard-sidebar a:hover {
+	background: #FC4F13;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 26px;
+	transition: all 150ms ease-in;
+}
+
+.dashboard-sidebar a.active {
+	font-weight: bolder;
+	color: #FC4F13;
+}
+
+.dashboard-sidebar a.active:hover {
+	font-weight: bolder;
+	color: #FFFFFF;
+}
+
+/* ADMIN DASHBOARD SIDEBAR STYLES --end-- */
+
+.logo-text {
+	color: #FFFFFF;
+	margin: 0.5rem 0;
+}
+
+.logo-text a {
+	color: #FFFFFF;
+}
+
+.logo-text a:hover {
+	color: #FC4F13;
+}
+
+.caption-text {
+	color: #FFFFFF;
+	margin: 0.5rem 0 0.8rem;
+}
+
+.menu > li > a {
+	color: #cecece;
+	transition: all 200ms ease-out;
+}
+
+.menu > li > a:hover {
+	color: #FFFFFF;
+	transition: all 200ms ease-in;
+}
+
+.is-dropdown-submenu {
+	left: 0;
+	top: 38px;
+	background: #fefefe;
+	border: 1px solid #565656;
+	border-radius: 0px 0px 5px 5px;
+	box-shadow: 5px 5px 10px #555;
+}
+
+.is-dropdown-submenu > li > .is-dropdown-submenu {
+	left: 100%;
+	top: 0px;
+	background: #fefefe;
+	border: 1px solid #565656;
+	border-radius: 0px 0px 5px 5px;
+}
+
+.menu > li > ul > li:hover {
+	background: #FC4F13;
+	transition: all 200ms ease-out;
+}
+
+.menu > li > ul > li:hover > a {
+	line-height: 14px;
+	font-size: 14px;
+	color: #FFFFFF;
+	transition: all 200ms ease-out;
+}
+
+.menu > li > ul > li > a {
+	line-height: 14px;
+	font-size: 12px;
+	color: #565656;
+	transition: all 200ms ease-out;
+}
+
+.menu > li > ul > li > a:hover {
+	color: #FFFFFF;
+	transition: all 200ms ease-in;
+}
+
+/* PAGINATION LIST --start-- */
+
+.pagination > .unavailable a {
+	color: #cecece;
+	cursor: not-allowed;
+}
+
+.pagination .current {
+	padding: 0 !important;
+	background: #04090a;
+	cursor: default;
+}
+
+.pagination .current:hover {
+	padding: 0 !important;
+	background: #04090a;
+	cursor: default;
+}
+
+.pagination .current a {
+	color: #fefefe;
+	cursor: default;
+}
+
+.pagination .current a:hover {
+	background: #04090a;
+	color: #fefefe;
+	cursor: default;
+}
+
+/* PAGINATION LIST --start-- */
+
+/* CUSTOM SELECT DROP-DOWN --start-- */
+/* ///  DECORATION CSS ///  */
+.cont_select_center {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -30px;
+	margin-left: -150px;
+}
+
+.cont_heg_50 {
+	position: absolute;
+	height: 50%;
+	left: 0;
+	top: 0;
+	width: 100%;
+	background-color: #fd7b52;
+}
+
+/* ///  END DECORATION CSS  ///  */
+
+.clear-list {
+	margin-left: 0px;
+}
+.clear-list li{
+	list-style: none;
+}
+/* CUSTOM SELECT DROP-DOWN --end-- */

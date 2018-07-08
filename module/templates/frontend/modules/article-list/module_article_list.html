@@ -1,0 +1,125 @@
+{% load mathfilters %}
+
+<div class="module-article-slider">
+	{% if module.module_article_list_module_key.module_article_list_main_count >= 1 %}
+		{% with main_count=module.module_article_list_module_key.module_article_list_main_count|stringformat:"s" %}
+			{% with  main_count_slice=":"|add:main_count %}
+				{% for article in module.module_article_list_module_key.module_article_list_category.article_category_key.all|slice:main_count_slice %}
+					{% if module.module_article_list_module_key.module_article_list_main_image == 1 %}
+						{% if module.module_article_list_module_key.module_article_list_main_image_thumb == 0 %}
+							<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}" class="small">
+								<img src="/static/{{ article.article_image }}">
+							</a>
+							<h6>
+								<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}" class="small">
+									{{ article.article_title }}
+								</a>
+							</h6>
+						{% else %}
+							<h6>
+								<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}" class="small">
+									{{ article.article_title }}
+								</a>
+							</h6>
+							{% if module.module_article_list_module_key.module_article_list_main_intro == 1 %}
+								<img src="/static/{{ article.article_image }}" style="float: left; max-width: 100px; max-height: 100px; padding: 5px 5px 5px 0;">
+								{% with main_intro=module.module_article_list_module_key.module_article_list_main_intro_slice|stringformat:"s" %}
+									{% with  main_intro_slice=":"|add:main_intro %}
+										{% autoescape off %}
+											{{ article.article_intro|slice:main_intro_slice }}
+										{% endautoescape %}
+									{% endwith %}
+								{% endwith %}
+							{% endif %}
+						{% endif %}
+					{% else %}
+						<h6>
+							<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}" >
+								{{ article.article_title }}
+							</a>
+						</h6>
+						{% if module.module_article_list_module_key.module_article_list_main_intro == 1 %}
+							{% with main_intro=module.module_article_list_module_key.module_article_list_main_intro_slice|stringformat:"s" %}
+								{% with  main_intro_slice=":"|add:main_intro %}
+									{% autoescape off %}
+										{{ article.article_intro|slice:main_intro_slice }}
+									{% endautoescape %}
+								{% endwith %}
+							{% endwith %}
+						{% endif %}
+						{% if module.module_article_list_module_key.module_article_list_main_button == 1 %}
+							<br>
+							<br>
+							<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}" class="button tiny">
+								{{ module.module_article_list_module_key.module_article_list_main_button_text }}
+							</a>
+						{% endif %}
+					{% endif %}
+					<hr>
+				{% endfor %}
+			{% endwith %}
+		{% endwith %}
+	{% endif %}
+
+	{% if module.module_article_list_module_key.module_article_list_link_count >= 1 %}
+		{% with total_count=module.module_article_list_module_key.module_article_list_link_count|add:module.module_article_list_module_key.module_article_list_main_count|stringformat:"s" %}
+			{% with main_count=module.module_article_list_module_key.module_article_list_main_count|stringformat:"s" %}
+				{% with  link_slice=main_count|add:":"|add:total_count %}
+					{% for article in module.module_article_list_module_key.module_article_list_category.article_category_key.all|slice:link_slice %}
+						{% if module.module_article_list_module_key.module_article_list_link_image == 1 %}
+							{% if module.module_article_list_module_key.module_article_list_link_image_thumb == 0 %}
+								<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}" class="small">
+									<img src="/static/{{ article.article_image }}">
+								</a>
+								<h6>
+									<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}" class="small">
+										{{ article.article_title }}
+									</a>
+								</h6>
+							{% else %}
+								<h6>
+									<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}" class="small">
+										{{ article.article_title }}
+									</a>
+								</h6>
+								{% if module.module_article_list_module_key.module_article_list_link_intro == 1 %}
+									<img src="/static/{{ article.article_image }}" style="float: left; max-width: 100px; max-height: 100px; padding: 5px 5px 5px 0;">
+									{% with link_intro=module.module_article_list_module_key.module_article_list_link_intro_slice|stringformat:"s" %}
+										{% with  link_intro_slice=":"|add:link_intro %}
+											{% autoescape off %}
+												{{ article.article_intro|slice:link_intro_slice }}
+											{% endautoescape %}
+										{% endwith %}
+									{% endwith %}
+								{% endif %}
+							{% endif %}
+						{% else %}
+							<h6>
+								<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}" >
+									{{ article.article_title }}
+								</a>
+							</h6>
+							{% if module.module_article_list_module_key.module_article_list_link_intro == 1 %}
+								{% with link_intro=module.module_article_list_module_key.module_article_list_link_intro_slice|stringformat:"s" %}
+									{% with  link_intro_slice=":"|add:link_intro %}
+										{% autoescape off %}
+											{{ article.article_intro|slice:link_intro_slice }}
+										{% endautoescape %}
+									{% endwith %}
+								{% endwith %}
+							{% endif %}
+							<br>
+							<br>
+							{% if module.module_article_list_module_key.module_article_list_link_button == 1 %}
+								<a href="/content/blog/{{ article.article_category.article_category_alias }}/{{ article.article_alias }}" class="button tiny">
+									{{ module.module_article_list_module_key.module_article_list_link_button_text }}
+								</a>
+							{% endif %}
+						{% endif %}
+						<hr>
+					{% endfor %}
+				{% endwith %}
+			{% endwith %}
+		{% endwith %}
+	{% endif %}
+</div>

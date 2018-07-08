@@ -1,0 +1,113 @@
+{% load staticfiles %}
+
+<div class="padding-20-0">
+	<table class="hover">
+		<thead>
+		<tr>
+			<td>
+				ID
+			</td>
+			<td>
+				Title
+			</td>
+			<td class="centered">
+				Default
+			</td>
+			<td class="centered">
+				Title Native
+			</td>
+			<td class="centered">
+				SEF prefix
+			</td>
+			<td class="centered">
+				Image
+			</td>
+			<td class="centered">
+				Status
+			</td>
+		</tr>
+		</thead>
+		<tbody>
+		{% for language in languages %}
+			<tr>
+				<td>
+					{{ language.id }}
+				</td>
+				<td>
+					{% if language.lang_sef == "xx" %}
+						<fa class="fa fa-globe"></fa>
+					{% else %}
+						<a href="#{{ language.id }}" data-open="change-language-{{ language.id|safe }}-modal">
+						{{ language.lang_title }}
+						</a>
+					{% endif %}
+				</td>
+				<td class="centered">
+					{% if language.lang_default == 1 %}
+						<form action="/mega-admin/change-language-default/" method="post" id="make-default-{{ language.id }}">
+							{% csrf_token %}
+							<input name="lang_id" value="{{ language.id }}" style="display: none">
+							<a onclick="document.getElementById('make-default-{{ language.id }}').submit();">
+								<fa class="fa fa-star" style="color: #eca317 !important;"></fa>
+							</a>
+						</form>
+					{% else %}
+						<form action="/mega-admin/change-language-default/" method="post" id="make-default-{{ language.id }}">
+							{% csrf_token %}
+							<input name="lang_id" value="{{ language.id }}" style="display: none">
+							<a onclick="document.getElementById('make-default-{{ language.id }}').submit();">
+								<fa class="fa fa-star" style="color: #cecece"></fa>
+							</a>
+							</form>
+					{% endif %}
+				</td>
+				<td class="centered">
+					{{ language.lang_title_native }}
+				</td>
+				<td class="centered">
+					{% if language.lang_sef == "xx" %}
+						Any
+					{% else %}
+						{{ language.lang_sef }}
+					{% endif %}
+				</td>
+				<td class="centered">
+					{% if language.lang_sef == "xx" %}
+						<fa class="fa fa-globe"></fa>
+					{% else %}
+						<img src="{% static 'img/system/languages/'|add:language.lang_sef|add:'.png' %}" style="width: 20px;">
+					{% endif %}
+				</td>
+				<td class="centered">
+					{% if language.lang_published == 1 %}
+						<form action="/mega-admin/change-language-state/" method="post" id="change-language-state-{{ language.id }}">
+							{% csrf_token %}
+							<input name="lang_id" value="{{ language.id }}" style="display: none">
+							<a onclick="document.getElementById('change-language-state-{{ language.id }}').submit();" class="tiny button light-gray-bg">
+								<fa class="fa fa-check green"></fa>
+							</a>
+						</form>
+					{% else %}
+						<form action="/mega-admin/change-language-state/" method="post" id="change-language-state-{{ language.id }}">
+							{% csrf_token %}
+							<input name="lang_id" value="{{ language.id }}" style="display: none">
+							<a onclick="document.getElementById('change-language-state-{{ language.id }}').submit();" class="tiny button light-gray-bg">
+								<fa class="fa fa-close" style="color: red;"></fa>
+							</a>
+						</form>
+					{% endif %}
+				</td>
+			</tr>
+			{% include "mega_admin_change_language.html" %}
+		{% empty %}
+			<tr>
+				<td colspan="5" class="centered">
+					<h5>
+						No Languages created
+					</h5>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>

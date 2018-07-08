@@ -1,0 +1,87 @@
+<h5>{{ menu_item_type.menu_type_title }}</h5>
+<label>
+	Single article
+	{% if current_menu_item != None %}
+		<input type="text" name="menu_item_single_article_article" value="{{ single_article.id }}" required
+		       class="hidden">
+	{% endif %}
+
+	{% if current_menu_item != None %}
+			<p>
+				<input type="radio" name="menu_item_single_article_article_id"
+				       value="{{ single_article.menu_item_single_article_article_id }}" checked required >
+				{{ single_article.menu_item_single_article_article.article_title }}
+			</p>
+			{% else %}
+			Select from list of articles
+			{% endif %}
+	<table class="hover">
+		<thead>
+		<tr>
+			<td>
+
+			</td>
+			<td>
+				ID
+			</td>
+			<td>
+				Title
+			</td>
+			<td class="centered">
+				Category
+			</td>
+			<td class="centered">
+				Languages
+			</td>
+			<td class="centered">
+				Published
+			</td>
+		</tr>
+		</thead>
+		<tbody>
+		{% for article in articles %}
+				<tr>
+				<label>
+					<td>
+						<input type="radio" name="menu_item_single_article_article_id" value="{{ article.id }}"
+						       required>
+					</td>
+					<td>
+						{{ article.id }}
+					</td>
+					<td>
+						<a href="/mega-admin/content/add-article/?id={{ article.id }}" class="primary-color"
+						   target="_blank">
+							{{ article.article_title }}
+						</a>
+					</td>
+					<td class="centered">
+						{{ article.article_category }}
+					</td>
+					<td class="centered">
+						{% if article.article_language.lang_sef == "xx" %}
+							All
+						{% else %}
+							{{ article.article_language.lang_sef }}
+						{% endif %}
+					</td>
+					<td class="centered">
+						{% if article.article_published == 1 %}
+							<fa class="fa fa-check green"></fa>
+						{% else %}
+							<fa class="fa fa-close" style="color: red;"></fa>
+						{% endif %}
+					</td>
+				</label>
+				</tr>
+
+		{% empty %}
+			<tr>
+				<td colspan="5" class="centered">
+					<h3>Yet there are no articles added</h3>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</label>

@@ -1,0 +1,84 @@
+<h5>{{ menu_item_type.menu_type_title }}</h5>
+<label>
+	Category blog
+	{% if current_menu_item != None %}
+		<input type="text" name="menu_item_category_blog_category" value="{{ category_blog.id }}" required
+		       class="hidden">
+	{% endif %}
+
+	{% if current_menu_item != None %}
+		<p>
+			<input type="radio" name="menu_item_category_blog_category_id"
+			       value="{{ category_blog.menu_item_category_blog_category_id }}" checked required >
+			{{ category_blog.menu_item_category_blog_category.article_category_title }}
+		</p>
+	{% else %}
+		<p>
+			Select from list of categories
+		</p>
+	{% endif %}
+	<table class="hover">
+		<thead>
+		<tr>
+			<td>
+
+			</td>
+			<td>
+				ID
+			</td>
+			<td>
+				Title
+			</td>
+			<td class="centered">
+				Articles
+			</td>
+			<td class="centered">
+				Languages
+			</td>
+			<td class="centered">
+				Published
+			</td>
+		</tr>
+		</thead>
+		<tbody>
+
+		{% for category in categories %}
+			<tr>
+				<label>
+					<td>
+						<input type="radio" name="menu_item_category_blog_category_id" value="{{ category.id }}" required>
+					</td>
+					<td>
+						{{ category.id }}
+					</td>
+					<td>
+						<a href="/mega-admin/content/add-category/?id={{ category.id }}" class="primary-color">
+							{{ category.article_category_title }}
+						</a>
+					</td>
+					<td class="centered">
+						{{ category.article_category_alias }}
+					</td>
+					<td class="centered">
+						{% if category.article_category_language.lang_sef == "xx" %}
+							All
+						{% else %}
+							{{ category.article_category_language.lang_sef }}
+						{% endif %}
+					</td>
+					<td class="centered">
+						{{ category.article_category_key.count }}
+					</td>
+				</label>
+			</tr>
+
+		{% empty %}
+			<tr>
+				<td colspan="5" class="centered">
+					<h3>Yet there are no categories added</h3>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</label>

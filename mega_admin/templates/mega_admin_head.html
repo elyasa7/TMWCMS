@@ -1,0 +1,22 @@
+{% load staticfiles %}
+
+{% block head %}
+	<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>
+		{{ title }}
+	</title>
+
+	<script src="{% static "mega-admin/js/editor/jquery-3.2.1.slim.min.js" %}"></script>
+	<link rel="stylesheet" href="{% static "mega-admin/css/editor/summernote-lite.css" %}"/>
+	<script src="{% static "mega-admin/js/editor/summernote-lite.js" %}"></script>
+
+	<link rel="stylesheet" href="{% static "mega-admin/css/foundation.css" %}"/>
+	<link rel="stylesheet" href="{% static "mega-admin/css/foundation-select.css" %}"/>
+	<link rel="stylesheet" href="{% static "mega-admin/css/app.css" %}"/>
+	<link rel="stylesheet" href="{% static "mega-admin/css/font-awesome.css" %}"/>
+	<script src="{% static "mega-admin/js/analytics.js" %}"></script>
+
+	</head >
+{% endblock %}
